@@ -16,7 +16,7 @@ public class Post {
 		mPostInfo = new HashMap<String,String>();
 		mPostInfo.put("score",Integer.toString(score));
 		mPostInfo.put("text",text);
-		mPostInfo.put("date",DATE_FORMAT.format(date));
+		mPostInfo.put("date",date);
 		mPostInfo.put("author",author);
 	}
 
@@ -28,8 +28,8 @@ public class Post {
 		return (String) mPostInfo.get("text");
 	}
 
-	public String getDate() {
-		return (String) mPostInfo.get("date");
+	public Date getDate() {
+		return (Date) mPostInfo.get("date");
 	}
 
 	public String getAuthor() {

@@ -1,19 +1,26 @@
 package com.moodjournal.model;
 
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Journal {
-  private List<Post> mPosts;
+  private Map<Date,Post> mPosts;
   
   public Journal() {
-    mPosts = new ArrayList<Post>();
+    mPosts = new HashMap<Date,Post>();
   }
 
   public void addPost(Post post) {
-    mPosts.add(post);
+    mPosts.put(post.getDate(),post);
+  }
+
+  public Post getPost(Date date) {
+    return mPosts.get(date);
   }
   
   public int getPostCount() {
@@ -23,7 +30,7 @@ public class Journal {
   // FIXME:  This should be cached!
   private Map<String, List<Post>> byAuthor() {
     Map<String, List<Post>> byAuthor = new HashMap<>();
-    for (Post post : mPosts) {
+    for (Post post : mPosts.values()) {
       List<Post> authorPosts = byAuthor.get(post.getAuthor());
       if (authorPosts == null) {
         authorPosts = new ArrayList<Post>();
@@ -33,3 +40,5 @@ public class Journal {
     }
     return byAuthor;
   }
+
+}
