@@ -1,7 +1,7 @@
 package com.moodjournal;
 
-import com.teamtreehouse.model.Post;
-import com.teamtreehouse.model.Journal;
+import com.moodjournal.model.Post;
+import com.moodjournal.model.Journal;
 
 import java.io.*;
 
@@ -26,12 +26,24 @@ public class JournalEntry {
 	}
 
 	private String promptAction() throws IOException {
-		mDate = DATE_FORMAT.format(new Date());
-		mEmpty = (mJournal.get(mDate) == null);
+		Date mDate = new Date();
+		mEmpty = (mJournal.getPost(mDate) == null);
+		String mResult = "";
 		if (mEmpty) {
-			System.out.println("How are you feeling today?");
+			mResult = "How are you feeling today?"; //temporary for test
+			} else {
+			mResult = "This is a test."; //temporary for test
 			}
+		System.out.printf("%s %n",mResult);
+		return mResult;
+	}
 
+	public void openJournal() {
+		try { promptAction();
+		} catch(IOException ioe) {
+			System.out.println("Problem");
+			ioe.printStackTrace();
 		}
 	}
 }
+
