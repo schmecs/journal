@@ -12,7 +12,7 @@ public class Post {
 
 	public Post(String author, int score, String text, Date date) {
 
-		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+		//SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 		mPostInfo = new HashMap<String,String>();
 		mPostInfo.put("score",Integer.toString(score));
 		mPostInfo.put("text",text);

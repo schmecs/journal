@@ -14,11 +14,13 @@ public class JournalEntry {
 	private BufferedReader mReader;
 	private Map<String, String> mMenu;
 	private Boolean mEmpty;
+	public static Date mDate;
 
 	public JournalEntry(Journal journal) {
 		mJournal = journal;
 		mReader = new BufferedReader(new InputStreamReader(System.in));
 		mMenu = new HashMap<String, String>();
+		mDate = new Date();
 		mMenu.put("create","Create a new post");
 		mMenu.put("edit","Edit an existing post");
 		mMenu.put("read","Read old posts");
@@ -26,24 +28,44 @@ public class JournalEntry {
 	}
 
 	private String promptAction() throws IOException {
-		Date mDate = new Date();
 		mEmpty = (mJournal.getPost(mDate) == null);
 		String mResult = "";
 		if (mEmpty) {
-			mResult = "How are you feeling today?"; //temporary for test
+			System.out.println("You haven't posted yet today. Create a new post Y/N?");
 			} else {
-			mResult = "This is a test."; //temporary for test
+			System.out.println("You've already posted today. What would you like to do? %n");
+			for (Map.Entry<String,String> option : mMenu.entrySet()) {
+				System.out.printf("%s - %s %n", 
+					option.getKey(), 
+					option.getValue());
+				}
 			}
-		System.out.printf("%s %n",mResult);
+		mResult = mReader.readLine();
 		return mResult;
 	}
 
+	private void createPost() {
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+		String mDateFormat = DATE_FORMAT.format(mDate);
+		System.out.printf("New post on %s: How are you feeling? %n", mDateFormat);
+		System.out.println("Enter a score from 1 to 5.");
+		// TO DO
+	}
+
 	public void openJournal() {
-		try { promptAction();
-		} catch(IOException ioe) {
-			System.out.println("Problem");
-			ioe.printStackTrace();
-		}
+		try { 
+			String choice = promptAction();
+			switch(choice) {
+				case "create" : 
+					createPost();
+					break;
+				default :
+					System.out.print("other"); //placeholder
+				}
+			} catch(IOException ioe) {
+				System.out.println("Problem");
+				ioe.printStackTrace();
+			}
 	}
 }
 
