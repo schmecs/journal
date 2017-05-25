@@ -1,6 +1,7 @@
 package com.moodjournal;
 
 import com.moodjournal.model.Post;
+import com.moodjournal.model.PostId;
 import com.moodjournal.model.Journal;
 
 import java.io.*;
@@ -21,6 +22,8 @@ public class JournalEntry {
 		mReader = new BufferedReader(new InputStreamReader(System.in));
 		mMenu = new HashMap<String, String>();
 		mDate = new Date();
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+		String mDateFormat = DATE_FORMAT.format(mDate);
 		mMenu.put("create","Create a new post");
 		mMenu.put("edit","Edit an existing post");
 		mMenu.put("read","Read old posts");
@@ -28,19 +31,13 @@ public class JournalEntry {
 	}
 
 	private String promptAction() throws IOException {
-		mEmpty = (mJournal.getPost(mDate) == null);
-		String mResult = "";
-		if (mEmpty) {
-			System.out.println("You haven't posted yet today. Create a new post Y/N?");
-			} else {
-			System.out.println("You've already posted today. What would you like to do? %n");
-			for (Map.Entry<String,String> option : mMenu.entrySet()) {
-				System.out.printf("%s - %s %n", 
-					option.getKey(), 
-					option.getValue());
-				}
-			}
-		mResult = mReader.readLine();
+		System.out.println("What would you like to do? %n");
+		for (Map.Entry<String,String> option : mMenu.entrySet()) {
+		System.out.printf("%s - %s %n", 
+			option.getKey(), 
+			option.getValue());
+		}
+		String mResult = mReader.readLine();
 		return mResult;
 	}
 

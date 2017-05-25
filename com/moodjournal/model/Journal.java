@@ -9,18 +9,18 @@ import java.util.List;
 import java.util.Map;
 
 public class Journal {
-  private Map<Date,Post> mPosts;
+  private Map<String,Post> mPosts;
   
   public Journal() {
-    mPosts = new HashMap<Date,Post>();
+    mPosts = new HashMap<String,Post>();
   }
 
   public void addPost(Post post) {
-    mPosts.put(post.getDate(),post);
+    mPosts.put(post.getID(),post);
   }
 
-  public Post getPost(Date date) {
-    return mPosts.get(date);
+  public Post getPost(String postID) {
+    return mPosts.get(postID);
   }
   
   public int getPostCount() {
