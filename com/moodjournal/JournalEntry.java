@@ -31,7 +31,7 @@ public class JournalEntry {
 	}
 
 	private String promptAction() throws IOException {
-		System.out.println("What would you like to do? %n");
+		System.out.printf("What would you like to do? %n");
 		for (Map.Entry<String,String> option : mMenu.entrySet()) {
 		System.out.printf("%s - %s %n", 
 			option.getKey(), 
@@ -42,27 +42,56 @@ public class JournalEntry {
 	}
 
 	private void createPost() {
+		System.out.println("Enter your name: ");
+		String mAuthor = "";
+		try {
+			mAuthor = mReader.readLine();
+		} catch (IOException ioe) {
+				System.out.println("Problem");
+				ioe.printStackTrace();
+		}
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 		String mDateFormat = DATE_FORMAT.format(mDate);
-		System.out.printf("New post on %s: How are you feeling? %n", mDateFormat);
-		System.out.println("Enter a score from 1 to 5.");
-		// TO DO
+		System.out.printf("%n New post on %s: How are you feeling? %n", mDateFormat);
+		System.out.println("Enter a score from 1 to 5: %n");
+		String mScoreInput = "";
+		String mText = "";
+		try {
+			mScoreInput = mReader.readLine();
+		} catch (IOException ioe) {
+				System.out.println("Problem");
+				ioe.printStackTrace();
+		}
+		int mScore = Integer.parseInt(mScoreInput);
+		System.out.printf("Score entered: %s %n", mScoreInput);
+		System.out.println("Type today's journal entry: ");
+		try {
+			mText = mReader.readLine();
+		} catch (IOException ioe) {
+				System.out.println("Problem");
+				ioe.printStackTrace();
+		}
+		Post mPost = new Post(mAuthor, mScore, mText, mDate);
+		mJournal.addPost(mPost);
 	}
 
 	public void openJournal() {
-		try { 
-			String choice = promptAction();
+		String choice = "";
+		while (choice != "quit") {
+			try { 
+			choice = promptAction();
 			switch(choice) {
 				case "create" : 
 					createPost();
 					break;
 				default :
-					System.out.print("other"); //placeholder
+					System.out.print("Please enter a valid choice. %n"); //placeholder
 				}
 			} catch(IOException ioe) {
 				System.out.println("Problem");
 				ioe.printStackTrace();
 			}
+		}
 	}
 }
 
