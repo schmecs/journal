@@ -13,6 +13,7 @@ import java.util.*;
 public class JournalEntry {
 	private Journal mJournal;
 	private BufferedReader mReader;
+	private Scanner	mScanner;
 	private Map<String, String> mMenu;
 	private Boolean mEmpty;
 	public static Date mDate;
@@ -22,6 +23,7 @@ public class JournalEntry {
 		mReader = new BufferedReader(new InputStreamReader(System.in));
 		mMenu = new HashMap<String, String>();
 		mDate = new Date();
+		mScanner = new Scanner(System.in);
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 		String mDateFormat = DATE_FORMAT.format(mDate);
 		mMenu.put("create","Create a new post");
@@ -54,16 +56,10 @@ public class JournalEntry {
 		String mDateFormat = DATE_FORMAT.format(mDate);
 		System.out.printf("%n New post on %s: How are you feeling? %n", mDateFormat);
 		System.out.printf("Enter a score from 1 to 5: %n");
-		String mScoreInput = "";
 		String mText = "";
-		try {
-			mScoreInput = mReader.readLine();
-		} catch (IOException ioe) {
-				System.out.println("Problem");
-				ioe.printStackTrace();
-		}
-		int mScore = Integer.parseInt(mScoreInput);
-		System.out.printf("Score entered: %s %n", mScoreInput);
+		int mScore = 0;
+		mScore = mScanner.nextInt();
+		System.out.printf("Score entered: %d %n", mScore);
 		System.out.println("Type today's journal entry: ");
 		try {
 			mText = mReader.readLine();
