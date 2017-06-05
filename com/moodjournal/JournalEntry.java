@@ -1,7 +1,6 @@
 package com.moodjournal;
 
 import com.moodjournal.model.Post;
-import com.moodjournal.model.PostId;
 import com.moodjournal.model.Journal;
 
 import java.io.*;
@@ -18,8 +17,8 @@ public class JournalEntry {
 	private Boolean mEmpty;
 	public static Date mDate;
 
-	public JournalEntry(Journal journal) {
-		mJournal = journal;
+	public JournalEntry() {
+		mJournal = new Journal();
 		mReader = new BufferedReader(new InputStreamReader(System.in));
 		mMenu = new HashMap<String, String>();
 		mDate = new Date();

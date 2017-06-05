@@ -10,13 +10,16 @@ import java.util.Map;
 
 public class Journal {
   private Map<String,Post> mPosts;
+  private int mPostId;
   
   public Journal() {
     mPosts = new HashMap<String,Post>();
+    mPostId = 0;
   }
 
   public void addPost(Post post) {
-    mPosts.put(post.getID(),post);
+    mPosts.put(Integer.toString(mPostId),post);
+    mPostId++;
   }
 
   public Post getPost(String postID) {
@@ -29,10 +32,11 @@ public class Journal {
 
   public void getAllPosts() {
     for (Map.Entry<String,Post> entry : mPosts.entrySet()) {
+      String postId = entry.getKey();
       Post post = getPost(entry.getKey());
       System.out.printf("%s: %n%s - %s %n",
+                        postId,
                         post.getDate(),
-                        post.getID(),
                         post.getText());
     }
   }
