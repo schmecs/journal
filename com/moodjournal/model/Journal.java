@@ -26,6 +26,14 @@ public class Journal {
   public int getPostCount() {
     return mPosts.size();
   }
+
+  public void getAllPosts() {
+    for (Map.Entry<String,Post> entry : mPosts.entrySet()) {
+      System.out.printf("%s - %s %n",
+                        entry.getKey(),
+                        entry.getValue());
+    }
+  }
   
   // FIXME:  This should be cached!
   private Map<String, List<Post>> byAuthor() {

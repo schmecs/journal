@@ -80,11 +80,14 @@ public class JournalEntry {
 				case "create" : 
 					createPost();
 					break;
+				case "read" :
+					readJournal();
+					break;
 				case "quit" :
 					System.out.printf("Bye for now. %n");
 					break;
 				default :
-					System.out.print("Please enter a valid choice. %n"); //placeholder
+					System.out.printf("Please enter a valid choice. %n"); //placeholder
 				}
 			} catch(IOException ioe) {
 				System.out.println("Problem");
@@ -92,5 +95,9 @@ public class JournalEntry {
 			}
 		} while (!choice.equals("quit"));
 	}
+
+	public void readJournal() {
+		mJournal.getAllPosts();
+	} 
 }
 
