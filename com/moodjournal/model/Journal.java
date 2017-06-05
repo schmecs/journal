@@ -29,9 +29,11 @@ public class Journal {
 
   public void getAllPosts() {
     for (Map.Entry<String,Post> entry : mPosts.entrySet()) {
-      System.out.printf("%s - %s %n",
-                        entry.getKey(),
-                        entry.getValue());
+      Post post = getPost(entry.getKey());
+      System.out.printf("%s: %n%s - %s %n",
+                        post.getDate(),
+                        post.getID(),
+                        post.getText());
     }
   }
   
