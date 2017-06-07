@@ -96,12 +96,11 @@ public class JournalEntry {
 	}
 
 	public void readJournal() {
-		Map<String,Post> mPosts = mJournal.getAllPosts();
-		for (Map.Entry<String,Post> entry : mPosts.entrySet()) {
-        String postId = entry.getKey();
-        Post post = mPosts.get(postId);
+		
+		for (String id : mJournal.postIds()) {
+        Post post = mJournal.getPost(id);
         System.out.printf("%n%s: %n%s - %s %n%n",
-                          postId,
+                          id,
                           post.getDate(),
                           post.getText());
     	}

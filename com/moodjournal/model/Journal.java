@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Journal {
   private Map<String,Post> mPosts;
@@ -30,8 +31,8 @@ public class Journal {
     return mPosts.size();
   }
 
-  public Map<String,Post> getAllPosts() {
-    return mPosts;
+  public Set<String> postIds() {
+    return mPosts.keySet();
   }
 
 }
