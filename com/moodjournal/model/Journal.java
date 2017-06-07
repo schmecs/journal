@@ -14,7 +14,7 @@ public class Journal {
   
   public Journal() {
     mPosts = new HashMap<String,Post>();
-    mPostId = 0;
+    mPostId = 1;
   }
 
   public void addPost(Post post) {
@@ -30,29 +30,8 @@ public class Journal {
     return mPosts.size();
   }
 
-  public void getAllPosts() {
-    for (Map.Entry<String,Post> entry : mPosts.entrySet()) {
-      String postId = entry.getKey();
-      Post post = getPost(entry.getKey());
-      System.out.printf("%s: %n%s - %s %n",
-                        postId,
-                        post.getDate(),
-                        post.getText());
-    }
-  }
-  
-  // FIXME:  This should be cached!
-  private Map<String, List<Post>> byAuthor() {
-    Map<String, List<Post>> byAuthor = new HashMap<>();
-    for (Post post : mPosts.values()) {
-      List<Post> authorPosts = byAuthor.get(post.getAuthor());
-      if (authorPosts == null) {
-        authorPosts = new ArrayList<Post>();
-        byAuthor.put(post.getAuthor(), authorPosts);
-      }
-      authorPosts.add(post);
-    }
-    return byAuthor;
+  public Map<String,Post> getAllPosts() {
+    return mPosts;
   }
 
 }
