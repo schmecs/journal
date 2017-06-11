@@ -20,6 +20,7 @@ public class Testingthings {
         Journaldb journalDb = new Journaldb();
         journalDb.createPostTable();
         journalDb.insert("1","rebecca","06-10-2017","4","yay");
+        //journalDb.selectByAuthor("rebecca");
 	}
 
 }

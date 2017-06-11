@@ -12,15 +12,22 @@ import java.util.Set;
 public class Journal {
   private Map<String,Post> mPosts;
   private int mPostId;
+  private int nextPostId;
   
   public Journal() {
     mPosts = new HashMap<String,Post>();
-    mPostId = 1;
+    //mPostId = 1;
+    nextPostId = mPosts.size();
   }
 
   public void addPost(Post post) {
-    mPosts.put(Integer.toString(mPostId),post);
-    mPostId++;
+    mPosts.put(Integer.toString(nextPostId),post);
+    nextPostId = mPosts.size();
+  }
+
+  public void loadPost(String postId, Post post) {
+    mPosts.put(postId, post);
+    nextPostId = mPosts.size();
   }
 
   public Post getPost(String postID) {

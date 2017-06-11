@@ -10,6 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +21,8 @@ public class Journaldb {
      /**
      * Connect to a sample database
      */
+
+    SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 
     private Connection connect() {
         // SQLite connection string
@@ -40,7 +46,7 @@ public class Journaldb {
                 + " author text NOT NULL,\n"
                 + " date text NOT NULL,\n"
                 + " score text NOT NULL,\n"
-                + " post_content text\n"
+                + " postContent text\n"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);
@@ -58,7 +64,7 @@ public class Journaldb {
     // }
 
     public void insert(String postId, String author, String date, String score, String postContent) {
-        String sql = "INSERT INTO all_posts(postId,author,date,score,post_content) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO all_posts(postId,author,date,score,postContent) VALUES(?,?,?,?,?)";
 
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -73,28 +79,38 @@ public class Journaldb {
         }
     }
 
-    // public Map<String,Post> selectByAuthor(String author){
-    //     String sql = "SELECT * FROM all_posts WHERE author = " + author;
-        
-    //     try (Connection conn = this.connect();
-    //          Statement stmt  = conn.createStatement();
-    //          ResultSet rs    = stmt.executeQuery(sql)){
+    public Journal selectByAuthor(String author){
+        String sql = "SELECT * FROM all_posts WHERE author = " + author;
+        Journal mJournal = new Journal();
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
             
-    //         // loop through the result set
-    //         Map<String,Post> journalContent = new HashMap<String,Post>();
-    //         while (rs.next()) {
-    //             //retrieve post Id
+            // loop through the result set
+            while (rs.next()) {
+                //retrieve post Id
+                String postId = rs.getString("postId");
 
-    //             //retrieve and combine rest of post into Post
-    //             System.out.println(rs.getString("id") +  "\t" + 
-    //                                rs.getString("name") + "\t" +
-    //                                rs.getString("name") + "\t" +
-    //                                rs.getString("capacity"));
-    //         }
-    //     } catch (SQLException e) {
-    //         System.out.println(e.getMessage());
-    //     }
-    // }
+                //retrieve and combine rest of post into Post
+                String thisAuthor = rs.getString("author");
+                String thisDateStr = rs.getString("date");
+                Date thisDate = DATE_FORMAT.parse(thisDateStr);
+                String thisScoreStr = rs.getString("score");
+                int thisScore = Integer.parseInt(thisScoreStr);
+                String thisPostContent = rs.getString("postContent");
+
+                Post post = new Post(thisAuthor,thisScore,thisPostContent,thisDate);
+
+                //load post to Journal
+                mJournal.loadPost(postId,post);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } catch (ParseException p) {
+            System.out.println(p.getMessage());
+        }
+        return mJournal;
+    }
 
     //TODO: Send Journal content to JournalEntry upon beginning of session
 }
