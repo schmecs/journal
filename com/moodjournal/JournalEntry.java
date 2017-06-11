@@ -10,7 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class JournalEntry {
+	private Journaldb mJournaldb;
 	private Journal mJournal;
+	private String mAuthor;
 	private BufferedReader mReader;
 	private Scanner	mScanner;
 	private Map<String, String> mMenu;
@@ -18,7 +20,6 @@ public class JournalEntry {
 	public static Date mDate;
 
 	public JournalEntry() {
-		mJournal = new Journal();
 		mReader = new BufferedReader(new InputStreamReader(System.in));
 		mMenu = new HashMap<String, String>();
 		mDate = new Date();
@@ -29,6 +30,13 @@ public class JournalEntry {
 		mMenu.put("edit","Edit an existing post");
 		mMenu.put("read","Read old posts");
 		mMenu.put("quit","Close the journal");
+	}
+
+	private String getUser() throws IOException {
+		String mUser;
+		System.out.printf("Enter your name: %n");
+		mUser = mReader.readLine();
+		return mUser;
 	}
 
 	private String promptAction() throws IOException {
@@ -43,14 +51,6 @@ public class JournalEntry {
 	}
 
 	private void createPost() {
-		System.out.println("Enter your name: ");
-		String mAuthor = "";
-		try {
-			mAuthor = mReader.readLine();
-		} catch (IOException ioe) {
-				System.out.println("Problem");
-				ioe.printStackTrace();
-		}
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 		String mDateFormat = DATE_FORMAT.format(mDate);
 		System.out.printf("%nNew post on %s: How are you feeling? %n", mDateFormat);
@@ -71,6 +71,12 @@ public class JournalEntry {
 	}
 
 	public void openJournal() {
+		try {
+			mAuthor = this.getUser();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		mJournal = mJournaldb.selectByAuthor(mAuthor);
 		String choice = "";
 		do {
 			try { 

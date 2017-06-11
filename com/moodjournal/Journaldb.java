@@ -58,11 +58,6 @@ public class Journaldb {
         }
     }
 
-    // public void connectJournal() {
-    //     Connection mConn = this.connect();
-    //     System.out.println("The connection has been established.");
-    // }
-
     public void insert(String postId, String author, String date, String score, String postContent) {
         String sql = "INSERT INTO all_posts(postId,author,date,score,postContent) VALUES(?,?,?,?,?)";
 
