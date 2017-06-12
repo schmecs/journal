@@ -108,5 +108,4 @@ public class Journaldb {
         return mJournal;
     }
 
-    //TODO: Send Journal content to JournalEntry upon beginning of session
 }

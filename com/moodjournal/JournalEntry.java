@@ -72,6 +72,16 @@ public class JournalEntry {
 		mJournal.addPost(mPost);
 	}
 
+	public void saveJournal() {
+		for (String id : mJournal.postIds()) {
+        Post post = mJournal.getPost(id);
+        mJournaldb.insert(id, mAuthor, post.getDate(), post.getScore(), post.getText());
+    	}
+
+		//TODO: catch exceptions (?)
+		//TODO: check if post id already exists (in journaldb sql?)
+	}
+
 	public void openJournal() {
 		mJournaldb.createPostTable();
 		try {
@@ -92,6 +102,8 @@ public class JournalEntry {
 					readJournal();
 					break;
 				case "quit" :
+					this.saveJournal();
+					System.out.printf("Saving updates . . . %n");
 					System.out.printf("Bye for now. %n");
 					break;
 				default :
