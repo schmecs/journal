@@ -13,6 +13,7 @@ public class JournalEntry {
 	private Journaldb mJournaldb;
 	private Journal mJournal;
 	private String mAuthor;
+	private int mLatest;
 	private BufferedReader mReader;
 	private Scanner	mScanner;
 	private Map<String, String> mMenu;
@@ -72,17 +73,7 @@ public class JournalEntry {
 		mJournal.addPost(mPost);
 	}
 
-	public void saveJournal() {
-		for (String id : mJournal.postIds()) {
-        Post post = mJournal.getPost(id);
-        mJournaldb.insert(id, mAuthor, post.getDate(), post.getScore(), post.getText());
-    	}
-
-		//TODO: catch exceptions (?)
-		//TODO: check if post id already exists (in journaldb sql?)
-	}
-
-	public void openJournal() {
+	public void loadJournal() {
 		mJournaldb.createPostTable();
 		try {
 			mAuthor = this.getUser().toLowerCase();
@@ -90,6 +81,22 @@ public class JournalEntry {
 			ioe.printStackTrace();
 		}
 		mJournal = mJournaldb.selectByAuthor(mAuthor);
+		mLatest = mJournal.getPostCount() - 1; //this is janky and perhaps journal format needs some work, or i need a better way of tracking last id / date
+	}
+
+	public void saveJournal() {
+		for (String id : mJournal.postIds()) {
+			if (Integer.parseInt(id) > mLatest) {
+				Post post = mJournal.getPost(id);
+        		mJournaldb.insert(id, mAuthor, post.getDate(), post.getScore(), post.getText());
+			}
+    	}
+
+		//TODO: deal with posts that were edited -- need to overwrite data
+	}
+
+	public void openJournal() {
+		this.loadJournal();
 		String choice = "";
 		do {
 			try { 
