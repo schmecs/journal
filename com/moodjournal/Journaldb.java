@@ -75,11 +75,12 @@ public class Journaldb {
     }
 
     public Journal selectByAuthor(String author){
-        String sql = "SELECT * FROM all_posts WHERE author = " + author;
         Journal mJournal = new Journal();
+        String sql = "SELECT * FROM all_posts WHERE author = ?"; // TODO: fix parameterized query with author string
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+             pstmt.setString(1, author);
+             ResultSet rs    = pstmt.executeQuery();
             
             // loop through the result set
             while (rs.next()) {
@@ -87,14 +88,14 @@ public class Journaldb {
                 String postId = rs.getString("postId");
 
                 //retrieve and combine rest of post into Post
-                String thisAuthor = rs.getString("author");
+                //String thisAuthor = rs.getString("author");
                 String thisDateStr = rs.getString("date");
                 Date thisDate = DATE_FORMAT.parse(thisDateStr);
                 String thisScoreStr = rs.getString("score");
                 int thisScore = Integer.parseInt(thisScoreStr);
                 String thisPostContent = rs.getString("postContent");
 
-                Post post = new Post(thisAuthor,thisScore,thisPostContent,thisDate);
+                Post post = new Post(author,thisScore,thisPostContent,thisDate);
 
                 //load post to Journal
                 mJournal.loadPost(postId,post);

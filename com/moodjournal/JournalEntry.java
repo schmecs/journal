@@ -20,6 +20,8 @@ public class JournalEntry {
 	public static Date mDate;
 
 	public JournalEntry() {
+		mJournaldb = new Journaldb();
+		mJournal = new Journal();
 		mReader = new BufferedReader(new InputStreamReader(System.in));
 		mMenu = new HashMap<String, String>();
 		mDate = new Date();
@@ -71,8 +73,9 @@ public class JournalEntry {
 	}
 
 	public void openJournal() {
+		mJournaldb.createPostTable();
 		try {
-			mAuthor = this.getUser();
+			mAuthor = this.getUser().toLowerCase();
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
