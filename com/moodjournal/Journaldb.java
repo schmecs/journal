@@ -42,12 +42,29 @@ public class Journaldb {
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS all_posts (\n"
-                + " postId text PRIMARY KEY,\n"
+                + " postId text NOT NULL,\n"
                 + " author text NOT NULL,\n"
                 + " date text NOT NULL,\n"
                 + " score text NOT NULL,\n"
-                + " postContent text\n"
-                + ");";
+                + " postContent text,\n"
+                + " PRIMARY KEY(postId, author));";
+        
+        try (Connection conn = DriverManager.getConnection(url);
+                Statement stmt = conn.createStatement()) {
+            // create a new table
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    //temporary for testing purposes
+    public static void dropPostTable() {
+        // SQLite connection string
+        String url = "jdbc:sqlite:Journaldb.db";
+        
+        // SQL statement for creating a new table
+        String sql = "DROP TABLE all_posts;";
         
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {

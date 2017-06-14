@@ -16,9 +16,9 @@ public class Testingthings {
   
   public static void main(String[] args) {
         JournalEntry journalEntry = new JournalEntry();
+        //Journaldb journalDb = new Journaldb();
+        //journalDb.dropPostTable();
         journalEntry.openJournal();
-        // Journaldb journalDb = new Journaldb();
-        // journalDb.createPostTable();
         // //journalDb.selectByAuthor("rebecca");
 	}
 
