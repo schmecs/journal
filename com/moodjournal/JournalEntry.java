@@ -60,13 +60,22 @@ public class JournalEntry {
 		System.out.printf("Enter a score from 1 to 5: %n");
 		String mText = "";
 		int mScore = 0;
-		mScore = mScanner.nextInt();
+		try {
+			mScore = mScanner.nextInt();
+			while (mScore < 1 || mScore > 5) {
+				System.out.println("Please enter a number from 1 to 5:");
+				mScore = mScanner.nextInt();
+			}
+		} catch (InputMismatchException ime) {
+			System.out.println("Problem: ");
+			ime.printStackTrace();
+		}
 		System.out.printf("Score entered: %d %n", mScore);
 		System.out.println("Type today's journal entry: ");
 		try {
 			mText = mReader.readLine();
 		} catch (IOException ioe) {
-				System.out.println("Problem");
+				System.out.println("Problem: ");
 				ioe.printStackTrace();
 		}
 		Post mPost = new Post(mAuthor, mScore, mText, mDate);
