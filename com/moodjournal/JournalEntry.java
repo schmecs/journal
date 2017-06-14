@@ -30,7 +30,7 @@ public class JournalEntry {
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 		String mDateFormat = DATE_FORMAT.format(mDate);
 		mMenu.put("create","Create a new post");
-		mMenu.put("edit","Edit an existing post");
+		//mMenu.put("edit","Edit an existing post");
 		mMenu.put("read","Read old posts");
 		mMenu.put("quit","Close the journal");
 	}
@@ -101,6 +101,10 @@ public class JournalEntry {
 		do {
 			try { 
 			choice = promptAction();
+			while (!mMenu.keySet().contains(choice)) {
+				System.out.println("Please enter a valid choice.");
+				choice = promptAction();
+			} 
 			switch(choice) {
 				case "create" : 
 					createPost();
