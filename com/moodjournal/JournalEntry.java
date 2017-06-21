@@ -140,8 +140,7 @@ public class JournalEntry {
 		
 		for (String id : mJournal.postIds()) {
         Post post = mJournal.getPost(id);
-        System.out.printf("%n%s: %n%s - %s %n%n",
-                          id,
+        System.out.printf("%n%s: %n%s %n%n",
                           post.getDate(),
                           post.getText());
     	}

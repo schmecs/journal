@@ -18,9 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Journaldb {
-     /**
-     * Connect to a sample database
-     */
 
     SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 
@@ -63,7 +60,6 @@ public class Journaldb {
         // SQLite connection string
         String url = "jdbc:sqlite:Journaldb.db";
         
-        // SQL statement for creating a new table
         String sql = "DROP TABLE all_posts;";
         
         try (Connection conn = DriverManager.getConnection(url);
