@@ -1,7 +1,7 @@
-package com.moodjournal;
+package com.schmecs.journal;
 
-import com.moodjournal.model.Post;
-import com.moodjournal.model.Journal;
+import com.schmecs.journal.model.Post;
+import com.schmecs.journal.model.Journal;
 
 import java.io.*;
 

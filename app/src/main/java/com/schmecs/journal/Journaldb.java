@@ -1,4 +1,8 @@
-package com.moodjournal;
+package com.schmecs.journal;
+
+import android.annotation.TargetApi;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 
 import com.moodjournal.model.Post;
 import com.moodjournal.model.Journal;
@@ -33,6 +37,8 @@ public class Journaldb {
         return conn;
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void createPostTable() {
         // SQLite connection string
         String url = "jdbc:sqlite:Journaldb.db";
@@ -56,6 +62,8 @@ public class Journaldb {
     }
 
     //temporary for testing purposes
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void dropPostTable() {
         // SQLite connection string
         String url = "jdbc:sqlite:Journaldb.db";
@@ -71,6 +79,7 @@ public class Journaldb {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void insert(String postId, String author, String date, String score, String postContent) {
         String sql = "INSERT INTO all_posts(postId,author,date,score,postContent) VALUES(?,?,?,?,?)";
 
@@ -87,6 +96,8 @@ public class Journaldb {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public Journal selectByAuthor(String author){
         Journal mJournal = new Journal();
         String sql = "SELECT * FROM all_posts WHERE author = ?"; // TODO: fix parameterized query with author string

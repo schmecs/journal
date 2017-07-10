@@ -1,4 +1,4 @@
-package com.moodjournal.model;
+package com.schmecs.journal.model;
 
 import java.text.SimpleDateFormat;
 
