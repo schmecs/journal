@@ -4,8 +4,8 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.moodjournal.model.Post;
-import com.moodjournal.model.Journal;
+import com.schmecs.journal.model.Post;
+import com.schmecs.journal.model.Journal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

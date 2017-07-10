@@ -35,6 +35,7 @@ public class JournalEntry {
 		mMenu.put("quit","Close the journal");
 	}
 
+	//TODO: Replace with login screen of some kind
 	private String getUser() throws IOException {
 		String mUser;
 		System.out.printf("Enter your name: %n");
@@ -42,6 +43,7 @@ public class JournalEntry {
 		return mUser;
 	}
 
+	//TODO: Replace with user input via menu selection
 	private String promptAction() throws IOException {
 		System.out.printf("What would you like to do? %n");
 		for (Map.Entry<String,String> option : mMenu.entrySet()) {
@@ -53,6 +55,7 @@ public class JournalEntry {
 		return mResult;
 	}
 
+	//TODO: New layout with text entry field
 	private void createPost() {
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 		String mDateFormat = DATE_FORMAT.format(mDate);

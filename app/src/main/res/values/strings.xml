@@ -2,4 +2,7 @@
     <string name="app_name">Journal</string>
     <string name="action_settings">Settings</string>
     <string name="HomeScreen">A penny for your thoughts</string>
+    <string name="new_entry">New Entry</string>
+    <string name="logout">Log Out</string>
+    <string name="home">Home</string>
 </resources>

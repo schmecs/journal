@@ -9,6 +9,8 @@ import android.widget.Button;
 
 public class EntryActivity extends AppCompatActivity {
 
+    JournalEntry je = new JournalEntry();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

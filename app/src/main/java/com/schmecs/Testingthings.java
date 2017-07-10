@@ -1,3 +1,5 @@
+package com.schmecs;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -5,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.moodjournal.model.Post;
-import com.moodjournal.model.Journal;
-import com.moodjournal.JournalEntry;
-import com.moodjournal.Journaldb;
+import com.schmecs.journal.model.Post;
+import com.schmecs.journal.model.Journal;
+import com.schmecs.journal.JournalEntry;
+import com.schmecs.journal.Journaldb;
 
 import java.util.Date;
 
