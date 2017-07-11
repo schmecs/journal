@@ -11,21 +11,21 @@
         android:id="@+id/home"
         android:orderInCategory="1"
         android:title="@string/home"
-        android:icon="@android:drawable/star_on"
+        android:icon="@android:drawable/ic_menu_revert"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/new_entry"
         android:orderInCategory="1"
         android:title="@string/new_entry"
-        android:icon="@android:drawable/ic_menu_edit"
+        android:icon="@android:drawable/ic_menu_add"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/logout"
         android:orderInCategory="1"
         android:title="@string/logout"
-        android:icon="@android:drawable/ic_notification_clear_all"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
         app:showAsAction="ifRoom"
         />
 </menu>
