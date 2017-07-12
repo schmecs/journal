@@ -1,5 +1,8 @@
 package com.schmecs.journal;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import com.schmecs.journal.model.Post;
 import com.schmecs.journal.model.Journal;
 
@@ -85,6 +88,7 @@ public class JournalEntry {
 		mJournal.addPost(mPost);
 	}
 
+	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 	public void loadJournal() {
 		mJournaldb.createPostTable();
 		try {

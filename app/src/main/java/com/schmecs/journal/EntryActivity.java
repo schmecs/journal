@@ -1,5 +1,8 @@
 package com.schmecs.journal;
 
+import com.schmecs.journal.model.Post;
+import com.schmecs.journal.model.Journal;
+
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -7,19 +10,35 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.Date;
 
 import static com.schmecs.journal.R.menu.menu_main;
 
 public class EntryActivity extends AppCompatActivity {
 
-    JournalEntry je = new JournalEntry();
+    Journal journal = new Journal();
+    Date date = new Date();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
+
+        Button saveButton = (Button) findViewById(R.id.save_entry_button);
+        final EditText entryText = (EditText) findViewById(R.id.entry_text);
+
+        saveButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                String content = entryText.getText().toString();
+                Post post = new Post("temp",5,content,date);
+            }
+        });
 
     }
 
