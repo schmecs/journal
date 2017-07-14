@@ -1,5 +1,6 @@
 package com.schmecs.journal;
 
+import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
@@ -63,20 +64,7 @@ public class JournalEntry {
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 		String mDateFormat = DATE_FORMAT.format(mDate);
 		System.out.printf("%nNew post on %s: How are you feeling? %n", mDateFormat);
-		System.out.printf("Enter a score from 1 to 5: %n");
 		String mText = "";
-		int mScore = 0;
-		try {
-			mScore = mScanner.nextInt();
-			while (mScore < 1 || mScore > 5) {
-				System.out.println("Please enter a number from 1 to 5:");
-				mScore = mScanner.nextInt();
-			}
-		} catch (InputMismatchException ime) {
-			System.out.println("Problem: ");
-			ime.printStackTrace();
-		}
-		System.out.printf("Score entered: %d %n", mScore);
 		System.out.println("Type today's journal entry: ");
 		try {
 			mText = mReader.readLine();
@@ -84,7 +72,7 @@ public class JournalEntry {
 				System.out.println("Problem: ");
 				ioe.printStackTrace();
 		}
-		Post mPost = new Post(mAuthor, mScore, mText, mDate);
+		Post mPost = new Post(mAuthor, mText, mDate);
 		mJournal.addPost(mPost);
 	}
 
@@ -100,17 +88,20 @@ public class JournalEntry {
 		mLatest = mJournal.getPostCount() - 1; //this is janky and perhaps journal format needs some work, or i need a better way of tracking last id / date
 	}
 
+	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 	public void saveJournal() {
 		for (String id : mJournal.postIds()) {
 			if (Integer.parseInt(id) > mLatest) {
 				Post post = mJournal.getPost(id);
-        		mJournaldb.insert(id, mAuthor, post.getDate(), post.getScore(), post.getText());
+        		mJournaldb.insert(id, mAuthor, post.getDate(), post.getText());
 			}
     	}
 
 		//TODO: deal with posts that were edited -- need to overwrite data
 	}
 
+	@TargetApi(Build.VERSION_CODES.KITKAT)
+	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 	public void openJournal() {
 		this.loadJournal();
 		String choice = "";

@@ -48,7 +48,6 @@ public class Journaldb {
                 + " postId text NOT NULL,\n"
                 + " author text NOT NULL,\n"
                 + " date text NOT NULL,\n"
-                + " score text NOT NULL,\n"
                 + " postContent text,\n"
                 + " PRIMARY KEY(postId, author));";
         
@@ -80,16 +79,15 @@ public class Journaldb {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void insert(String postId, String author, String date, String score, String postContent) {
-        String sql = "INSERT INTO all_posts(postId,author,date,score,postContent) VALUES(?,?,?,?,?)";
+    public void insert(String postId, String author, String date, String postContent) {
+        String sql = "INSERT INTO all_posts(postId,author,date,postContent) VALUES(?,?,?,?,?)";
 
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, postId);
             pstmt.setString(2, author);
             pstmt.setString(3, date);
-            pstmt.setString(4, score);
-            pstmt.setString(5, postContent);
+            pstmt.setString(4, postContent);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -115,11 +113,9 @@ public class Journaldb {
                 //String thisAuthor = rs.getString("author");
                 String thisDateStr = rs.getString("date");
                 Date thisDate = DATE_FORMAT.parse(thisDateStr);
-                String thisScoreStr = rs.getString("score");
-                int thisScore = Integer.parseInt(thisScoreStr);
                 String thisPostContent = rs.getString("postContent");
 
-                Post post = new Post(author,thisScore,thisPostContent,thisDate);
+                Post post = new Post(author,thisPostContent,thisDate);
 
                 //load post to Journal
                 mJournal.loadPost(postId,post);

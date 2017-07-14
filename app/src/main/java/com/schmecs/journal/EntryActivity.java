@@ -21,8 +21,8 @@ import static com.schmecs.journal.R.menu.menu_main;
 
 public class EntryActivity extends AppCompatActivity {
 
-    Journal journal = new Journal();
-    Date date = new Date();
+    JournalEntry mJournalEntry = new JournalEntry();
+    Date mDate = new Date();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class EntryActivity extends AppCompatActivity {
             @Override
             public void onClick (View view) {
                 String content = entryText.getText().toString();
-                Post post = new Post("temp",5,content,date);
+                Post post = new Post("temp",content,mDate);
             }
         });
 

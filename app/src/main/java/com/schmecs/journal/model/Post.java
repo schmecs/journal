@@ -12,19 +12,14 @@ import java.util.Map;
 	private String mPostString;
 	private String mDate;
 
-	public Post(String author, int score, String text, Date date) {
+	public Post(String author, String text, Date date) {
 
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 		mDate = DATE_FORMAT.format(date);
 		mPostInfo = new HashMap<String,String>();
-		mPostInfo.put("score",Integer.toString(score));
 		mPostInfo.put("text",text);
 		mPostInfo.put("date",mDate);
 		mPostInfo.put("author",author);
-	}
-
-	public String getScore() {
-		return (String) mPostInfo.get("score");
 	}
 
 	public String getText() {
