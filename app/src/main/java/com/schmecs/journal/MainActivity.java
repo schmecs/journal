@@ -17,12 +17,18 @@ import static com.schmecs.journal.R.menu.menu_main;
 
 public class MainActivity extends AppCompatActivity {
 
+    String mUserName = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        while (mUserName == null) {
+            mUserName = this.getUserName();
+        }
+
     }
 
     public void launchEntry() {
@@ -44,20 +50,21 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
+        //TODO: figure out how to get username and THEN step into launching entry activity
         switch (id) {
             case R.id.new_entry:
                 this.launchEntry();
                 return true;
             default:
-                return super.onOptionsItemSelected(item);
-
+                return false;
         }
     }
 
     public String getUserName() {
-        String mText = "";
+        final String[] mText = {""};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Enter username:");
+        builder.setTitle("Enter username");
 
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -66,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String mText = "";
-                mText = input.getText().toString();
+                mText[0] = input.getText().toString();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -76,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
-                return mText;
+        builder.show();
+        return mText[0];
+
     }
 }
