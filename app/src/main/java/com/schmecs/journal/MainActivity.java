@@ -2,32 +2,44 @@ package com.schmecs.journal;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import static com.schmecs.journal.R.menu.menu_main;
 
 public class MainActivity extends AppCompatActivity {
 
     String mUserName = null;
+    SharedPreferences settings; //= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        settings = getApplicationContext().getSharedPreferences("appSettings",0);
+        editor = settings.edit();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        while (mUserName == null) {
-            mUserName = this.getUserName();
-        }
+        //while (mUserName == null) {
+            this.getUserName();
+            mUserName = settings.getString("userName","");
+        //}
+        TextView textView = (TextView) findViewById(R.id.welcome_screen);
+        String welcomeText = "Welcome, " + mUserName;
+        textView.setText(welcomeText);
 
     }
 
@@ -61,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public String getUserName() {
-        final String[] mText = {""};
+    public void getUserName() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Enter username");
 
@@ -73,9 +84,13 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mText[0] = input.getText().toString();
+                mUserName = input.getText().toString();
+                editor.putString("userName",mUserName);
+                editor.commit();
+                Log.d("Check Username","Value: " + mUserName);
             }
-        });
+        }
+        );
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -83,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.show();
-        return mText[0];
 
     }
 }

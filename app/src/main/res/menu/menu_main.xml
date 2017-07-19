@@ -16,9 +16,16 @@
         />
     <item
         android:id="@+id/new_entry"
-        android:orderInCategory="1"
+        android:orderInCategory="3"
         android:title="@string/new_entry"
         android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/read_journal"
+        android:orderInCategory="2"
+        android:title="@string/read_journal"
+        android:icon="@android:drawable/ic_menu_view"
         app:showAsAction="ifRoom"
         />
     <item
