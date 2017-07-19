@@ -33,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //while (mUserName == null) {
+        mUserName = settings.getString("userName","");
+        Log.d("Check mUserName","Value: " + mUserName);
+        while (mUserName == null) {
             this.getUserName();
             mUserName = settings.getString("userName","");
-        //}
+        }
         TextView textView = (TextView) findViewById(R.id.welcome_screen);
         String welcomeText = "Welcome, " + mUserName;
         textView.setText(welcomeText);
@@ -62,12 +64,16 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-
-        //TODO: figure out how to get username and THEN step into launching entry activity
         switch (id) {
             case R.id.new_entry:
                 this.launchEntry();
                 return true;
+            case R.id.logout:
+                editor.clear();
+                editor.commit();
+                TextView textView = (TextView) findViewById(R.id.welcome_screen);
+                String welcomeText = "Welcome, stranger";
+                textView.setText(welcomeText);
             default:
                 return false;
         }
@@ -84,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mUserName = input.getText().toString();
-                editor.putString("userName",mUserName);
+                String userInput = input.getText().toString();
+                editor.putString("userName",userInput);
                 editor.commit();
-                Log.d("Check Username","Value: " + mUserName);
+                Log.d("Check Username","Value: " + userInput);
             }
         }
         );
