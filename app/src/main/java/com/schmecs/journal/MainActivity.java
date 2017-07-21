@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mUserName = settings.getString("userName","");
+        mUserName = settings.getString("userName",null);
         Log.d("Check mUserName","Value: " + mUserName);
         while (mUserName == null) {
             this.getUserName();
             mUserName = settings.getString("userName","");
         }
         TextView textView = (TextView) findViewById(R.id.welcome_screen);
-        String welcomeText = "Welcome, " + mUserName;
+        String welcomeText = "Welcome, " + settings.getString("userName",null);
         textView.setText(welcomeText);
 
     }
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 String userInput = input.getText().toString();
                 editor.putString("userName",userInput);
                 editor.commit();
-                Log.d("Check Username","Value: " + userInput);
+                Log.d("Check Username","Value: " + settings.getString("userName",null));
             }
         }
         );
