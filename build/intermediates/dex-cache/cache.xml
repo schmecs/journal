@@ -3,6 +3,15 @@
 
     <item
         is-multidex="true"
+        jar="/Users/rblum/.gradle/caches/modules-2/files-2.1/org.sqldroid/sqldroid/1.0.3/e163bbc80e2c7b99d7f20cffa36fd5b25996975/sqldroid-1.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0e163bbc80e2c7b99d7f20cffa36fd5b25996975">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/sqldroid-1.0.3_659a3d8553e5487606d9e997cae79c8d52bd7203/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"

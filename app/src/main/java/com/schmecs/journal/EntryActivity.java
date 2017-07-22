@@ -4,10 +4,14 @@ import com.schmecs.journal.model.Post;
 import com.schmecs.journal.model.Journal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View.OnClickListener;
@@ -21,7 +25,10 @@ import static com.schmecs.journal.R.menu.menu_main;
 
 public class EntryActivity extends AppCompatActivity {
 
+    SharedPreferences settings;
+    String mUserName;
     JournalEntry mJournalEntry = new JournalEntry();
+    Journal mJournal;
     Date mDate = new Date();
 
     @Override
@@ -29,14 +36,26 @@ public class EntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
 
+        settings = getApplicationContext().getSharedPreferences("appSettings",0);
+        mUserName = settings.getString("userName",null);
+
+        Intent i = getIntent();
+        mJournal = (Journal) i.getSerializableExtra("Journal");
+
         Button saveButton = (Button) findViewById(R.id.save_entry_button);
         final EditText entryText = (EditText) findViewById(R.id.entry_text);
 
         saveButton.setOnClickListener(new OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick (View view) {
                 String content = entryText.getText().toString();
-                Post post = new Post("temp",content,mDate);
+                Post post = new Post(mUserName,content,mDate);
+                mJournal.addPost(post);
+                mJournalEntry.saveJournal();
+                String postCount = Integer.toString(mJournal.getPostCount());
+                Log.d("postcount", postCount);
+                launchHome();
             }
         });
 

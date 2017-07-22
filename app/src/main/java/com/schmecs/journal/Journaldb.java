@@ -1,13 +1,16 @@
 package com.schmecs.journal;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 
 import com.schmecs.journal.model.Post;
 import com.schmecs.journal.model.Journal;
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +30,12 @@ public class Journaldb {
 
     private Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:Journaldb.db";
+        try {
+            DriverManager.registerDriver((Driver) Class.forName("org.sqldroid.SQLDroidDriver").newInstance());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to register SQLDroidDriver");
+        }
+        String url = "jdbc:sqldroid:/data/data/com.schmecs.journal/Journaldb.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -41,7 +49,7 @@ public class Journaldb {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void createPostTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:Journaldb.db";
+        String url = "jdbc:sqldroid:/data/data/com.schmecs.journal/Journaldb.db";
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS all_posts (\n"
@@ -56,7 +64,7 @@ public class Journaldb {
             // create a new table
             stmt.execute(sql);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Log.d("error",e.getMessage());
         }
     }
 
@@ -65,7 +73,7 @@ public class Journaldb {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void dropPostTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:Journaldb.db";
+        String url = "jdbc:sqldroid:/data/data/com.schmecs.journal/Journaldb.db";
         
         String sql = "DROP TABLE all_posts;";
         
@@ -90,7 +98,7 @@ public class Journaldb {
             pstmt.setString(4, postContent);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Log.d("error",e.getMessage());
         }
     }
 
@@ -121,9 +129,9 @@ public class Journaldb {
                 mJournal.loadPost(postId,post);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Log.d("error",e.getMessage());
         } catch (ParseException p) {
-            System.out.println(p.getMessage());
+            Log.d("error",p.getMessage());
         }
         return mJournal;
     }

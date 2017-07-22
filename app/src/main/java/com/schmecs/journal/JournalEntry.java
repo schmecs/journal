@@ -40,10 +40,10 @@ public class JournalEntry {
 	}
 
 	//TODO: Replace with login screen of some kind
-	private String getUser() throws IOException {
+	private String getUser(String userName) throws IOException {
 		String mUser;
-		System.out.printf("Enter your name: %n");
-		mUser = mReader.readLine();
+		//System.out.printf("Enter your name: %n");
+		mUser = userName;
 		return mUser;
 	}
 
@@ -77,15 +77,16 @@ public class JournalEntry {
 	}
 
 	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-	public void loadJournal() {
+	public Journal loadJournal(String userName) {
 		mJournaldb.createPostTable();
 		try {
-			mAuthor = this.getUser().toLowerCase();
+			mAuthor = this.getUser(userName).toLowerCase();
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
 		mJournal = mJournaldb.selectByAuthor(mAuthor);
 		mLatest = mJournal.getPostCount() - 1; //this is janky and perhaps journal format needs some work, or i need a better way of tracking last id / date
+		return mJournal;
 	}
 
 	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -102,8 +103,8 @@ public class JournalEntry {
 
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-	public void openJournal() {
-		this.loadJournal();
+	public void openJournal(String userName) {
+		this.loadJournal(userName);
 		String choice = "";
 		do {
 			try { 

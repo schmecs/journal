@@ -1,5 +1,6 @@
 package com.schmecs.journal.model;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Journal {
+public class Journal implements Serializable {
   private Map<String,Post> mPosts;
   private int mPostId;
   private int nextPostId;

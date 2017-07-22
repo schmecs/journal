@@ -3,8 +3,10 @@ package com.schmecs.journal;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,14 +19,23 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.schmecs.journal.model.Journal;
+
+import java.io.Serializable;
+import java.util.Date;
+
 import static com.schmecs.journal.R.menu.menu_main;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     String mUserName = null;
     SharedPreferences settings; //= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     SharedPreferences.Editor editor;
+    JournalEntry mJournalEntry = new JournalEntry();
+    Journal mJournal = new Journal();
+    Date mDate = new Date();
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,18 +46,22 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mUserName = settings.getString("userName",null);
         Log.d("Check mUserName","Value: " + mUserName);
-        while (mUserName == null) {
+        //while (mUserName == null) {
             this.getUserName();
             mUserName = settings.getString("userName","");
-        }
+        //}
+        mJournal = mJournalEntry.loadJournal(mUserName); //TODO: how does caching work?
+        int postCount = mJournal.getPostCount();
         TextView textView = (TextView) findViewById(R.id.welcome_screen);
-        String welcomeText = "Welcome, " + settings.getString("userName",null);
+        // using postCount in welcome text just as a check for now
+        String welcomeText = "Welcome, " + mUserName + ": " + Integer.toString(postCount);
         textView.setText(welcomeText);
 
     }
 
     public void launchEntry() {
         Intent intent = new Intent(this, EntryActivity.class);
+        intent.putExtra("Journal", (Serializable) mJournal);
         startActivity(intent);
     }
 

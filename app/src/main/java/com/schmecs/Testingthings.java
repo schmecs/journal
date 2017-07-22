@@ -20,7 +20,7 @@ public class Testingthings {
         JournalEntry journalEntry = new JournalEntry();
         //Journaldb journalDb = new Journaldb();
         //journalDb.dropPostTable();
-        journalEntry.openJournal();
+        //journalEntry.openJournal();
         // //journalDb.selectByAuthor("rebecca");
 	}
 
