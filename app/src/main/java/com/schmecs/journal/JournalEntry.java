@@ -75,31 +75,7 @@ public class JournalEntry implements Serializable {
 		Post mPost = new Post(mAuthor, mText, mDate);
 		mJournal.addPost(mPost);
 	}
-
-	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-	public Journal loadJournal(String userName) {
-		mJournaldb.createPostTable();
-		try {
-			mAuthor = this.getUser(userName).toLowerCase();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		}
-		mJournal = mJournaldb.selectByAuthor(mAuthor);
-		mLatest = mJournal.getPostCount() - 1; //this is janky and perhaps journal format needs some work, or i need a better way of tracking last id / date
-		return mJournal;
-	}
-
-	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-	public void saveJournal() {
-		for (String id : mJournal.postIds()) {
-			if (Integer.parseInt(id) > mLatest) {
-				Post post = mJournal.getPost(id);
-        		mJournaldb.insert(id, mAuthor, post.getDate(), post.getText());
-			}
-    	}
-
-		//TODO: deal with posts that were edited -- need to overwrite data
-	}
+	
 
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	@RequiresApi(api = Build.VERSION_CODES.KITKAT)

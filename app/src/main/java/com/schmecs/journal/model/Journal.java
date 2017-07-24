@@ -54,6 +54,16 @@ public class Journal implements Serializable {
         mLatest = this.getPostCount() - 1; //this is janky and perhaps journal format needs some work, or i need a better way of tracking last id / date
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void saveJournal() {
+        for (String id : this.postIds()) {
+            if (Integer.parseInt(id) > mLatest) {
+                Post post = this.getPost(id);
+                mJournaldb.insert(id, mAuthor, post.getDate(), post.getText());
+            }
+        }
+    }
+
   public Post getPost(String postID) {
     return mPosts.get(postID);
   }
@@ -62,6 +72,7 @@ public class Journal implements Serializable {
     return mPosts.size();
   }
 
+  //TODO: have an identifier for each new post that wasn't part of load
   public Set<String> postIds() {
     return mPosts.keySet();
   }
