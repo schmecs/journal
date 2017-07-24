@@ -30,9 +30,9 @@ import java.util.Map;
 		return (String) mPostInfo.get("date");
 	}
 
-	public String getAuthor() {
-		return (String) mPostInfo.get("author");
-	}
+	//public String getAuthor() {
+	//	return (String) mPostInfo.get("author");
+	//}
 
 
 	// @Override

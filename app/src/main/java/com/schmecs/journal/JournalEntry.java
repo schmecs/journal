@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class JournalEntry implements Serializable {
-	private Journaldb mJournaldb;
+	//private Journaldb mJournaldb;
 	private Journal mJournal;
 	private String mAuthor;
 	private int mLatest;
@@ -25,7 +25,7 @@ public class JournalEntry implements Serializable {
 	public static Date mDate;
 
 	public JournalEntry() {
-		mJournaldb = new Journaldb();
+		//mJournaldb = new Journaldb();
 		mJournal = new Journal();
 		mReader = new BufferedReader(new InputStreamReader(System.in));
 		mMenu = new HashMap<String, String>();

@@ -101,8 +101,8 @@ public class Journaldb {
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public Journal selectByAuthor(String author){
-        Journal mJournal = new Journal();
+    public Map<String, Post> selectByAuthor(String author){
+        Map<String, Post> oldPosts = new HashMap<String, Post>();
         String sql = "SELECT * FROM all_posts WHERE author = ?"; // TODO: fix parameterized query with author string
         try (Connection conn = this.connect();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
@@ -123,14 +123,14 @@ public class Journaldb {
                 Post post = new Post(author,thisPostContent,thisDate);
 
                 //load post to Journal
-                mJournal.loadPost(postId,post);
+                oldPosts.put(postId, post);
             }
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
         } catch (ParseException p) {
             Log.d("error",p.getMessage());
         }
-        return mJournal;
+        return oldPosts;
     }
 
 }
