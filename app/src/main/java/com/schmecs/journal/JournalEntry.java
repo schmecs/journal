@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.*;
 
-public class JournalEntry {
+public class JournalEntry implements Serializable {
 	private Journaldb mJournaldb;
 	private Journal mJournal;
 	private String mAuthor;

@@ -1,13 +1,10 @@
-package com.schmecs.journal;
+package com.schmecs.journal.model;
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
-
-import com.schmecs.journal.model.Post;
-import com.schmecs.journal.model.Journal;
 
 import java.sql.Connection;
 import java.sql.Driver;

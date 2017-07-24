@@ -19,15 +19,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import static com.schmecs.journal.R.menu.menu_main;
 
 public class EntryActivity extends AppCompatActivity {
 
-    SharedPreferences settings;
+    SharedPreferences isUserLoggedIn;
     String mUserName;
-    JournalEntry mJournalEntry = new JournalEntry();
+    JournalEntry mJournalEntry;
     Journal mJournal;
     Date mDate = new Date();
 
@@ -36,8 +37,10 @@ public class EntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
 
-        settings = getApplicationContext().getSharedPreferences("appSettings",0);
-        mUserName = settings.getString("userName",null);
+        isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
+
+        mUserName = isUserLoggedIn.getString("userName",null);
+        mJournalEntry = new JournalEntry();
 
         Intent i = getIntent();
         mJournal = (Journal) i.getSerializableExtra("Journal");
@@ -54,7 +57,7 @@ public class EntryActivity extends AppCompatActivity {
                 mJournal.addPost(post);
                 mJournalEntry.saveJournal();
                 String postCount = Integer.toString(mJournal.getPostCount());
-                Log.d("postcount", postCount);
+                Log.d("postCount", postCount);
                 launchHome();
             }
         });

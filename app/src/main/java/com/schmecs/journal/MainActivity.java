@@ -28,40 +28,47 @@ import static com.schmecs.journal.R.menu.menu_main;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
 
-    String mUserName = null;
-    SharedPreferences settings; //= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+    String mUserName;
+    SharedPreferences isUserLoggedIn;
     SharedPreferences.Editor editor;
-    JournalEntry mJournalEntry = new JournalEntry();
-    Journal mJournal = new Journal();
     Date mDate = new Date();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        settings = getApplicationContext().getSharedPreferences("appSettings",0);
-        editor = settings.edit();
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mUserName = settings.getString("userName",null);
+        isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
+        mUserName = "schmecs";
+//        if (isUserLoggedIn.contains("userName")) {
+//            if (isUserLoggedIn.getString("userName",null) == null) {
+//                mUserName = loginUser();
+//            } else {
+//                mUserName = isUserLoggedIn.getString("userName",null);
+//            }
+//        } else {
+//            mUserName = loginUser();
+//        }
         Log.d("Check mUserName","Value: " + mUserName);
-        //while (mUserName == null) {
-            this.getUserName();
-            mUserName = settings.getString("userName","");
-        //}
-        mJournal = mJournalEntry.loadJournal(mUserName); //TODO: how does caching work?
-        int postCount = mJournal.getPostCount();
+
         TextView textView = (TextView) findViewById(R.id.welcome_screen);
         // using postCount in welcome text just as a check for now
-        String welcomeText = "Welcome, " + mUserName + ": " + Integer.toString(postCount);
+        String welcomeText = "Welcome, " + mUserName;
         textView.setText(welcomeText);
 
     }
 
+    public String loginUser() {
+        this.getUserName();
+        mUserName = isUserLoggedIn.getString("userName", null);
+        return mUserName;
+    }
+
     public void launchEntry() {
         Intent intent = new Intent(this, EntryActivity.class);
-        intent.putExtra("Journal", (Serializable) mJournal);
         startActivity(intent);
     }
 
@@ -83,12 +90,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             case R.id.new_entry:
                 this.launchEntry();
                 return true;
-            case R.id.logout:
-                editor.clear();
-                editor.commit();
-                TextView textView = (TextView) findViewById(R.id.welcome_screen);
-                String welcomeText = "Welcome, stranger";
-                textView.setText(welcomeText);
+//            case R.id.logout:
+//                editor.clear();
+//                editor.commit();
+//                TextView textView = (TextView) findViewById(R.id.welcome_screen);
+//                String welcomeText = "Welcome, stranger";
+//                textView.setText(welcomeText);
             default:
                 return false;
         }
@@ -105,10 +112,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                editor = isUserLoggedIn.edit();
                 String userInput = input.getText().toString();
                 editor.putString("userName",userInput);
-                editor.commit();
-                Log.d("Check Username","Value: " + settings.getString("userName",null));
+                editor.apply();
             }
         }
         );
