@@ -19,7 +19,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.schmecs.journal.model.Journal;
+//import com.schmecs.journal.model.Journal;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -29,8 +29,8 @@ import static com.schmecs.journal.R.menu.menu_main;
 public class MainActivity extends AppCompatActivity implements Serializable {
 
     String mUserName;
-    SharedPreferences isUserLoggedIn;
-    SharedPreferences.Editor editor;
+    //SharedPreferences isUserLoggedIn;
+    //SharedPreferences.Editor editor;
     Date mDate = new Date();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
+        //isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
         mUserName = "schmecs";
 //        if (isUserLoggedIn.contains("userName")) {
 //            if (isUserLoggedIn.getString("userName",null) == null) {
@@ -61,14 +61,20 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     }
 
-    public String loginUser() {
-        this.getUserName();
-        mUserName = isUserLoggedIn.getString("userName", null);
-        return mUserName;
-    }
+//    public String loginUser() {
+//        this.getUserName();
+//        mUserName = isUserLoggedIn.getString("userName", null);
+//        return mUserName;
+//    }
 
+    //TODO: pass in class to launch as a variable?
     public void launchEntry() {
         Intent intent = new Intent(this, EntryActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchReader() {
+        Intent intent = new Intent(this, ReadActivity.class);
         startActivity(intent);
     }
 
@@ -90,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             case R.id.new_entry:
                 this.launchEntry();
                 return true;
+            case R.id.read_journal:
+                this.launchReader();
+                return true;
 //            case R.id.logout:
 //                editor.clear();
 //                editor.commit();
@@ -101,31 +110,31 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
     }
 
-    public void getUserName() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Enter username");
-
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder.setView(input);
-
-        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                editor = isUserLoggedIn.edit();
-                String userInput = input.getText().toString();
-                editor.putString("userName",userInput);
-                editor.apply();
-            }
-        }
-        );
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        builder.show();
-
-    }
+//    public void getUserName() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Enter username");
+//
+//        final EditText input = new EditText(this);
+//        input.setInputType(InputType.TYPE_CLASS_TEXT);
+//        builder.setView(input);
+//
+//        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                editor = isUserLoggedIn.edit();
+//                String userInput = input.getText().toString();
+//                editor.putString("userName",userInput);
+//                editor.apply();
+//            }
+//        }
+//        );
+//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.cancel();
+//            }
+//        });
+//        builder.show();
+//
+//    }
 }

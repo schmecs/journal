@@ -1,5 +1,6 @@
 package com.schmecs.journal;
 
+import com.schmecs.journal.model.Journaldb;
 import com.schmecs.journal.model.Post;
 import com.schmecs.journal.model.Journal;
 
@@ -21,6 +22,8 @@ import android.widget.EditText;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.schmecs.journal.R.menu.menu_main;
 
@@ -28,10 +31,12 @@ public class EntryActivity extends AppCompatActivity {
 
     SharedPreferences isUserLoggedIn;
     String mUserName;
-    JournalEntry mJournalEntry;
+    //JournalEntry mJournalEntry;
     Journal mJournal;
+    Journaldb mJournaldb;
     Date mDate = new Date();
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +44,10 @@ public class EntryActivity extends AppCompatActivity {
 
         isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
 
-        mUserName = isUserLoggedIn.getString("userName",null);
-        mJournalEntry = new JournalEntry();
+        mUserName = "schmecs";
 
-        Intent i = getIntent();
-        mJournal = (Journal) i.getSerializableExtra("Journal");
+        mJournal = new Journal();
+        mJournal.loadJournal(mUserName);
 
         Button saveButton = (Button) findViewById(R.id.save_entry_button);
         final EditText entryText = (EditText) findViewById(R.id.entry_text);
@@ -55,7 +59,7 @@ public class EntryActivity extends AppCompatActivity {
                 String content = entryText.getText().toString();
                 Post post = new Post(mUserName,content,mDate);
                 mJournal.addPost(post);
-                mJournalEntry.saveJournal();
+                //mJournalEntry.saveJournal();
                 String postCount = Integer.toString(mJournal.getPostCount());
                 Log.d("postCount", postCount);
                 launchHome();
