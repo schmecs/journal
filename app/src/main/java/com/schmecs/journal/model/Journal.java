@@ -34,11 +34,6 @@ public class Journal implements Serializable {
     nextPostId = mPosts.size();
   }
 
-  public void loadPost(String postId, Post post) {
-    mPosts.put(postId, post);
-    //nextPostId = mPosts.size();
-  }
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void loadJournal(String userName) {
         mJournaldb.createPostTable();
