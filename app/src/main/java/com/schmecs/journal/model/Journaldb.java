@@ -70,7 +70,7 @@ public class Journaldb {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void dropPostTable() {
         // SQLite connection string
-        String url = "jdbc:sqldroid:/data/data/com.schmecs.journal/Journaldb.db";
+        String url = "jdbc:sqldroid:data/data/com.schmecs.journal/Journaldb.db";
         
         String sql = "DROP TABLE all_posts;";
         
@@ -85,7 +85,7 @@ public class Journaldb {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void insert(String postId, String author, String date, String postContent) {
-        String sql = "INSERT INTO all_posts(postId,author,date,postContent) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO all_posts(postId,author,date,postContent) VALUES(?,?,?,?)";
 
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {

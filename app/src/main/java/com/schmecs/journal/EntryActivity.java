@@ -48,6 +48,8 @@ public class EntryActivity extends AppCompatActivity {
 
         mJournal = new Journal();
         mJournal.loadJournal(mUserName);
+        String postCount = Integer.toString(mJournal.getPostCount());
+        Log.d("postCount", postCount);
 
         Button saveButton = (Button) findViewById(R.id.save_entry_button);
         final EditText entryText = (EditText) findViewById(R.id.entry_text);
@@ -59,7 +61,7 @@ public class EntryActivity extends AppCompatActivity {
                 String content = entryText.getText().toString();
                 Post post = new Post(mUserName,content,mDate);
                 mJournal.addPost(post);
-                //mJournalEntry.saveJournal();
+                mJournal.saveJournal();
                 String postCount = Integer.toString(mJournal.getPostCount());
                 Log.d("postCount", postCount);
                 launchHome();
