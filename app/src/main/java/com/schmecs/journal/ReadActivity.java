@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.Set;
@@ -45,6 +46,11 @@ public class ReadActivity extends AppCompatActivity {
         String postText = mJournal.getPost(lastPost).getText();
         Log.d("postDate",postDate);
         Log.d("postText",postText);
+
+        TextView dateText = (TextView) findViewById(R.id.entryDate);
+        TextView contentText = (TextView) findViewById(R.id.entryContent);
+        dateText.setText(postDate);
+        contentText.setText(postText);
 
     }
 }
