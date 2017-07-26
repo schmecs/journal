@@ -42,7 +42,7 @@ public class EntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
 
-        isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
+        //isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
 
         mUserName = "schmecs";
 
