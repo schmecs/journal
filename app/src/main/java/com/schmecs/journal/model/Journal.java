@@ -60,6 +60,7 @@ public class Journal implements Serializable {
             if (Integer.parseInt(id) > mLatest) {
                 Post post = this.getPost(id);
                 mJournaldb.insert(id, mAuthor, post.getDate(), post.getText());
+                //TODO: add validation & toast that post successfully added
             }
         }
     }

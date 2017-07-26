@@ -29,7 +29,7 @@ import static com.schmecs.journal.R.menu.menu_main;
 
 public class EntryActivity extends AppCompatActivity {
 
-    SharedPreferences isUserLoggedIn;
+    //SharedPreferences isUserLoggedIn;
     String mUserName;
     //JournalEntry mJournalEntry;
     Journal mJournal;
