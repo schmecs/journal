@@ -24,4 +24,22 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:text=""/>
+
+    <Button
+        android:id="@+id/toEntryScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/create_new_entry"/>
+
+    <Button
+        android:id="@+id/backHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/toEntryScreen"
+        android:layout_toRightOf="@+id/toEntryScreen"
+        android:text="@string/back"/>
+
 </RelativeLayout>

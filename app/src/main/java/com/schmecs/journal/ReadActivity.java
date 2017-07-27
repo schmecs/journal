@@ -36,6 +36,9 @@ public class ReadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.read_journal);
 
+        Button entryButton = (Button) findViewById(R.id.toEntryScreen);
+        Button backButton = (Button) findViewById(R.id.backHome);
+
         mUserName = "schmecs";
         mJournal = new Journal();
         mJournal.loadJournal(mUserName);
@@ -57,5 +60,28 @@ public class ReadActivity extends AppCompatActivity {
         dateText.setText(postDate);
         contentText.setText(postText);
 
+        backButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchHome();
+            }
+        });
+
+        entryButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchEntry();
+            }
+        });
+    }
+
+    public void launchHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchEntry() {
+        Intent intent = new Intent(this, EntryActivity.class);
+        startActivity(intent);
     }
 }
