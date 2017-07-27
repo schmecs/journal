@@ -1,7 +1,6 @@
 package com.schmecs.journal;
 
 import com.schmecs.journal.model.Journal;
-import com.schmecs.journal.model.Journaldb;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +25,7 @@ import java.util.Set;
 import static com.schmecs.journal.R.menu.menu_main;
 
 public class ReadActivity extends AppCompatActivity {
+
     String mUserName;
     Journal mJournal;
     Set<String> mPostIds;
@@ -39,13 +39,18 @@ public class ReadActivity extends AppCompatActivity {
         mUserName = "schmecs";
         mJournal = new Journal();
         mJournal.loadJournal(mUserName);
-        mPostIds = mJournal.postIds();
-        String lastPost = Collections.max(mPostIds);
-
-        String postDate = mJournal.getPost(lastPost).getDate();
-        String postText = mJournal.getPost(lastPost).getText();
-        Log.d("postDate",postDate);
-        Log.d("postText",postText);
+        String postDate;
+        String postText;
+        Log.d("postCount",Integer.toString(mJournal.getPostCount()));
+        if (mJournal.getPostCount() == 0) {
+            postDate = "No posts!";
+            postText = "You haven't written anything yet.";
+        } else {
+            mPostIds = mJournal.postIds();
+            String lastPost = Collections.max(mPostIds);
+            postDate = mJournal.getPost(lastPost).getDate();
+            postText = mJournal.getPost(lastPost).getText();
+        }
 
         TextView dateText = (TextView) findViewById(R.id.entryDate);
         TextView contentText = (TextView) findViewById(R.id.entryContent);

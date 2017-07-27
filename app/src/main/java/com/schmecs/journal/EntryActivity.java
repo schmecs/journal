@@ -29,11 +29,8 @@ import static com.schmecs.journal.R.menu.menu_main;
 
 public class EntryActivity extends AppCompatActivity {
 
-    //SharedPreferences isUserLoggedIn;
     String mUserName;
-    //JournalEntry mJournalEntry;
     Journal mJournal;
-    Journaldb mJournaldb;
     Date mDate = new Date();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -42,10 +39,7 @@ public class EntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
 
-        //isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
-
         mUserName = "schmecs";
-
         mJournal = new Journal();
         mJournal.loadJournal(mUserName);
         String postCount = Integer.toString(mJournal.getPostCount());

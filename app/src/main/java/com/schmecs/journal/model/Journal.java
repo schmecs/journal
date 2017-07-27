@@ -22,6 +22,7 @@ public class Journal implements Serializable {
     private String mAuthor;
     private int mLatest;
   
+  @RequiresApi(api = Build.VERSION_CODES.KITKAT)
   public Journal() {
       mPosts = new HashMap<String,Post>();
       mJournaldb = new Journaldb();
@@ -36,7 +37,7 @@ public class Journal implements Serializable {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void loadJournal(String userName) {
-        mJournaldb.createPostTable();
+        Journaldb.createPostTable();
         //try {
             mAuthor = userName.toLowerCase();
         //} catch (IOException ioe) {

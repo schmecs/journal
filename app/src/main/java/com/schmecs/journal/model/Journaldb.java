@@ -60,6 +60,7 @@ public class Journaldb {
                 Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
+            Log.d("table created", "true");
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
         }
