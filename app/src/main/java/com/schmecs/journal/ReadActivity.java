@@ -1,15 +1,20 @@
 package com.schmecs.journal;
 
 import com.schmecs.journal.model.Journal;
+import com.schmecs.journal.model.Post;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.StringDef;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -17,14 +22,24 @@ import android.view.MenuItem;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import static com.schmecs.journal.R.menu.menu_main;
 
 public class ReadActivity extends AppCompatActivity {
+
+    private List<Post> postList;
+    private RecyclerView mRecyclerView;
+    private JournalRVA adapter;
+    private ProgressBar mProgressBar;
+    private Context mContext;
 
     String mUserName;
     Journal mJournal;
@@ -36,29 +51,20 @@ public class ReadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.read_journal);
 
-        Button entryButton = (Button) findViewById(R.id.toEntryScreen);
-        Button backButton = (Button) findViewById(R.id.backHome);
-
         mUserName = "schmecs";
         mJournal = new Journal();
         mJournal.loadJournal(mUserName);
-        String postDate;
-        String postText;
-        Log.d("postCount",Integer.toString(mJournal.getPostCount()));
-        if (mJournal.getPostCount() == 0) {
-            postDate = "No posts!";
-            postText = "You haven't written anything yet.";
-        } else {
-            mPostIds = mJournal.postIds();
-            String lastPost = Collections.max(mPostIds);
-            postDate = mJournal.getPost(lastPost).getDate();
-            postText = mJournal.getPost(lastPost).getText();
-        }
+        postList = this.makeList(mJournal);
 
-        TextView dateText = (TextView) findViewById(R.id.entryDate);
-        TextView contentText = (TextView) findViewById(R.id.entryContent);
-        dateText.setText(postDate);
-        contentText.setText(postText);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new JournalRVA(mContext, postList);
+        mRecyclerView.setAdapter(adapter);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+
+        Button entryButton = (Button) findViewById(R.id.toEntryScreen);
+        Button backButton = (Button) findViewById(R.id.backHome);
 
         backButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -73,6 +79,25 @@ public class ReadActivity extends AppCompatActivity {
                 launchEntry();
             }
         });
+
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(Post post) {
+                Toast.makeText(ReadActivity.this, post.getDate(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private List<Post> makeList(Journal journal) {
+            postList = new ArrayList<>();
+
+            for (int i = 0; i < journal.getPostCount(); i++) {
+                Post post = journal.getPost(Integer.toString(i));
+                postList.add(post);
+            }
+        return postList;
     }
 
     public void launchHome() {
@@ -84,4 +109,11 @@ public class ReadActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EntryActivity.class);
         startActivity(intent);
     }
+
+    public Journal getJournal() {
+        return mJournal;
+    }
+
+
+
 }
