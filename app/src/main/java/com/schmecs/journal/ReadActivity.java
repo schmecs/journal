@@ -47,9 +47,7 @@ public class ReadActivity extends AppCompatActivity {
     Set<String> mPostIds;
 
 
-    //TODO: FIX BUTTONS BLOCKING JOURNAL CONTENT
     //TODO: GET RID OF LOADING CIRCLE
-    //TODO: FIX BUTTON SIZES
     //TODO: FIGURE OUT WHAT'S GOING ON WITH PROGRESS BAR
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -67,7 +65,7 @@ public class ReadActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new JournalRVA(mContext, postList);
         mRecyclerView.setAdapter(adapter);
-        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        //mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
         Button entryButton = (Button) findViewById(R.id.toEntryScreen);
         Button backButton = (Button) findViewById(R.id.backHome);
@@ -89,6 +87,7 @@ public class ReadActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(Post post) {
+                //REPLACE THIS WITH AN EXPANDED VIEW OF THE SINGLE POST
                 Toast.makeText(ReadActivity.this, post.getDate(), Toast.LENGTH_LONG).show();
             }
         });
@@ -123,9 +122,9 @@ public class ReadActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public Journal getJournal() {
-        return mJournal;
-    }
+//    public Journal getJournal() {
+//        return mJournal;
+//    }
 
 
 
