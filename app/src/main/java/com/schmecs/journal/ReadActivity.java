@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.schmecs.journal.R.menu.menu_main;
+import static com.schmecs.journal.R.menu.menu_read;
 
 public class ReadActivity extends AppCompatActivity {
 
@@ -46,9 +47,6 @@ public class ReadActivity extends AppCompatActivity {
     Journal mJournal;
     Set<String> mPostIds;
 
-
-    //TODO: GET RID OF LOADING CIRCLE
-    //TODO: FIGURE OUT WHAT'S GOING ON WITH PROGRESS BAR
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,22 +65,6 @@ public class ReadActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
         //mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
-        Button entryButton = (Button) findViewById(R.id.toEntryScreen);
-        Button backButton = (Button) findViewById(R.id.backHome);
-
-        backButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchHome();
-            }
-        });
-
-        entryButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchEntry();
-            }
-        });
 
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -91,6 +73,32 @@ public class ReadActivity extends AppCompatActivity {
                 Toast.makeText(ReadActivity.this, post.getDate(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(menu_read, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.back:
+                this.launchHome();
+                return true;
+            case R.id.new_entry:
+                this.launchEntry();
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 

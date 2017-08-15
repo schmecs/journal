@@ -3,6 +3,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:id="@+id/appBarLayout">
+
+    </android.support.design.widget.AppBarLayout>
+
     <Space android:id="@+id/dummy"
            android:layout_width="0dp"
            android:layout_height="0dp"
@@ -13,7 +27,6 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/toEntryScreen"
         android:layout_centerInParent="true"/>
 
     <!--<ProgressBar-->
@@ -21,24 +34,5 @@
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_centerInParent="true"/>-->
-
-    <Button
-        android:id="@+id/toEntryScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/dummy"
-        android:text="@string/create_new_entry"/>
-
-    <Button
-        android:id="@+id/backHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/toEntryScreen"
-        android:layout_toRightOf="@+id/dummy"
-        android:text="@string/back"/>
 
 </RelativeLayout>

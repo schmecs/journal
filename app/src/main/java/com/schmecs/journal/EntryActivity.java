@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.schmecs.journal.R.menu.menu_entry;
 import static com.schmecs.journal.R.menu.menu_main;
 
 public class EntryActivity extends AppCompatActivity {
@@ -72,7 +73,7 @@ public class EntryActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(menu_main, menu);
+        getMenuInflater().inflate(menu_entry, menu);
         return true;
     }
 
@@ -84,7 +85,7 @@ public class EntryActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.home:
+            case R.id.back:
                 this.launchHome();
                 return true;
             default:
