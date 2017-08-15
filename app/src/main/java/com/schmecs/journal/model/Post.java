@@ -1,12 +1,16 @@
 package com.schmecs.journal.model;
 
+import android.support.annotation.NonNull;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-	public class Post {
+	public class Post implements Comparator<Post> {
 
 	private Map<String,String> mPostInfo;
 	private String mPostString;
@@ -30,7 +34,23 @@ import java.util.Map;
 		return (String) mPostInfo.get("date");
 	}
 
-	//public String getAuthor() {
+	public Date getDateStamp() {
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+		try {
+			return DATE_FORMAT.parse(mPostInfo.get("date"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	    //sorts in ascending date order but i'm not currently using this...
+		@Override
+		public int compare(Post post1, Post post2) {
+			return post1.getDateStamp().compareTo(post2.getDateStamp());
+		}
+
+		//public String getAuthor() {
 	//	return (String) mPostInfo.get("author");
 	//}
 

@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -45,6 +46,11 @@ public class ReadActivity extends AppCompatActivity {
     Journal mJournal;
     Set<String> mPostIds;
 
+
+    //TODO: FIX BUTTONS BLOCKING JOURNAL CONTENT
+    //TODO: GET RID OF LOADING CIRCLE
+    //TODO: FIX BUTTON SIZES
+    //TODO: FIGURE OUT WHAT'S GOING ON WITH PROGRESS BAR
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +103,13 @@ public class ReadActivity extends AppCompatActivity {
                 Post post = journal.getPost(Integer.toString(i));
                 postList.add(post);
             }
+            //Sort posts with newest first for recycler view
+            Collections.sort(postList, new Comparator<Post>() {
+            @Override
+            public int compare(Post post1, Post post2) {
+                return post2.getDateStamp().compareTo(post1.getDateStamp());
+            }
+        });
         return postList;
     }
 
