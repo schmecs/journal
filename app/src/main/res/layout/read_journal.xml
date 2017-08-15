@@ -3,6 +3,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <Space android:id="@+id/dummy"
+           android:layout_width="0dp"
+           android:layout_height="0dp"
+           android:layout_centerHorizontal="true"
+           android:visibility="invisible"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -21,16 +27,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/dummy"
         android:text="@string/create_new_entry"/>
 
     <Button
         android:id="@+id/backHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/toEntryScreen"
-        android:layout_toRightOf="@+id/toEntryScreen"
+        android:layout_toRightOf="@+id/dummy"
         android:text="@string/back"/>
 
 </RelativeLayout>
