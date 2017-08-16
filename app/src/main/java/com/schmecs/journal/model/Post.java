@@ -10,15 +10,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-	public class Post implements Comparator<Post> {
+public class Post implements Comparator<Post> {
 
-	private Map<String,String> mPostInfo;
-	private String mPostString;
-	private String mDate;
+    private Map<String,String> mPostInfo;
+    private String mPostString;
+    private String mDate;
 
 	public Post(String author, String text, Date date) {
 
-		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 		mDate = DATE_FORMAT.format(date);
 		mPostInfo = new HashMap<String,String>();
 		mPostInfo.put("text",text);
@@ -35,7 +35,7 @@ import java.util.Map;
 	}
 
 	public Date getDateStamp() {
-		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 		try {
 			return DATE_FORMAT.parse(mPostInfo.get("date"));
 		} catch (ParseException e) {

@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class Journaldb {
 
-    SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+    SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 
     private Connection connect() {
         // SQLite connection string
