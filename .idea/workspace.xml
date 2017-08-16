@@ -15,14 +15,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_entry.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_entry.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/read_journal.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/read_journal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/journal_entry.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/journal_entry.xml" />
     </list>
     <ignored path="Journal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_entry.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_entry.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_entry.xml">
           <provider selected="true" editor-type-id="android-designer2">
             <state />
@@ -79,6 +73,19 @@
                 <element signature="e#1445#1465#0" expanded="true" />
                 <element signature="e#1689#1709#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="journal_entry.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/journal_entry.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2012,7 +2019,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/model/Journal.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/model/Journaldb.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/journal_entry.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/OnItemClickListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/JournalRVA.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/model/Post.java" />
@@ -2023,6 +2029,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/read_journal.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_entry.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/journal_entry.xml" />
       </list>
     </option>
   </component>
@@ -3656,17 +3663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/journal_entry.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/read_journal.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3705,6 +3701,17 @@
             <element signature="e#1445#1465#0" expanded="true" />
             <element signature="e#1689#1709#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/journal_entry.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
