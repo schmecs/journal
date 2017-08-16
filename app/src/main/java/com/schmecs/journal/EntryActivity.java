@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -47,13 +48,13 @@ public class EntryActivity extends AppCompatActivity {
         Log.d("postCount", postCount);
 
         Button saveButton = (Button) findViewById(R.id.save_entry_button);
-        final EditText entryText = (EditText) findViewById(R.id.entry_text);
+        final TextInputEditText entryTextInput = (TextInputEditText) findViewById(R.id.entry_text_input);
 
         saveButton.setOnClickListener(new OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick (View view) {
-                String content = entryText.getText().toString();
+                String content = entryTextInput.getText().toString();
                 Post post = new Post(mUserName,content,mDate);
                 mJournal.addPost(post);
                 mJournal.saveJournal();
