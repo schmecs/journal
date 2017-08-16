@@ -60,7 +60,7 @@ public class EntryActivity extends AppCompatActivity {
                 mJournal.saveJournal();
                 String postCount = Integer.toString(mJournal.getPostCount());
                 Log.d("postCount", postCount);
-                launchHome();
+                launchReader();
             }
         });
 
@@ -68,6 +68,11 @@ public class EntryActivity extends AppCompatActivity {
 
     public void launchHome() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchReader() {
+        Intent intent = new Intent(this, ReadActivity.class);
         startActivity(intent);
     }
 
@@ -89,6 +94,8 @@ public class EntryActivity extends AppCompatActivity {
             case R.id.back:
                 this.launchHome();
                 return true;
+            case R.id.read_journal:
+                this.launchReader();
             default:
                 return super.onOptionsItemSelected(item);
 

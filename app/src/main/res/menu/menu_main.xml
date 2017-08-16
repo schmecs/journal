@@ -25,7 +25,7 @@
         android:id="@+id/read_journal"
         android:orderInCategory="3"
         android:title="@string/read_journal"
-        android:icon="@android:drawable/ic_menu_view"
+        android:icon="@android:drawable/ic_menu_recent_history"
         app:showAsAction="ifRoom"
         />
     <!--<item-->
