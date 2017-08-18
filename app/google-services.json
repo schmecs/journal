@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1057265835686",
+    "project_id": "journal-9d98f"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057265835686:android:62ed6947d7683a95",
+        "android_client_info": {
+          "package_name": "com.schmecs.journal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057265835686-s89et740vc5pi5ccieg0hp5aoodmrked.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.schmecs.journal",
+            "certificate_hash": "c1a48122f24e2b6a06ba9691f7f2df14fe607474"
+          }
+        },
+        {
+          "client_id": "1057265835686-6k23l419qf7d5cqkt1h89hkf3hireu44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdYXLSMl7idT6tM6V2bhwc0gOj2yu3xSI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

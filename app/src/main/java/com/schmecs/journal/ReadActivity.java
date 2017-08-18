@@ -53,7 +53,7 @@ public class ReadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.read_journal);
 
-        mUserName = "schmecs";
+        mUserName = "human";
         mJournal = new Journal();
         mJournal.loadJournal(mUserName);
         postList = this.makeList(mJournal);

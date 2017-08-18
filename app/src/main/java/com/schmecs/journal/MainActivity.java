@@ -29,8 +29,8 @@ import static com.schmecs.journal.R.menu.menu_main;
 public class MainActivity extends AppCompatActivity implements Serializable {
 
     String mUserName;
-    //SharedPreferences isUserLoggedIn;
-    //SharedPreferences.Editor editor;
+
+
     Date mDate = new Date();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
-        mUserName = "schmecs";
+        mUserName = "human";
 //        if (isUserLoggedIn.contains("userName")) {
 //            if (isUserLoggedIn.getString("userName",null) == null) {
 //                mUserName = loginUser();

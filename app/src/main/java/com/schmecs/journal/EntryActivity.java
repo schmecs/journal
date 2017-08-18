@@ -41,7 +41,7 @@ public class EntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
 
-        mUserName = "schmecs";
+        mUserName = "human";
         mJournal = new Journal();
         mJournal.loadJournal(mUserName);
         String postCount = Integer.toString(mJournal.getPostCount());
