@@ -3,24 +3,6 @@
 
     <item
         is-multidex="false"
-        jar="/Users/rblum/.android/build-cache/4606df22c4f7e1fcc8211e58ed2e63a81e92a73d/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_7244bd953a59c6e539df2591b17fa64c541f1df1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/rblum/.android/build-cache/fb2780fb541cacdefe8bc120318fb708ba71b709/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_edf1d155933da73119254333e6605b7297e3d47d.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/rblum/.android/build-cache/e1112e869bf58b1c228fa935315cf6e9a582ca3e/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -29,22 +11,13 @@
         <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_9cd0c69f378c0ccf4571b845d092f3e5113287dc.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/rblum/.gradle/caches/modules-2/files-2.1/org.sqldroid/sqldroid/1.0.3/e163bbc80e2c7b99d7f20cffa36fd5b25996975/sqldroid-1.0.3.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/6b2ba33ca9a538ce0fe9c4a81548403386c161f2/output/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="0e163bbc80e2c7b99d7f20cffa36fd5b25996975">
-        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/sqldroid-1.0.3_659a3d8553e5487606d9e997cae79c8d52bd7203.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/rblum/.android/build-cache/c513eb6fc0403ffb811a09976da79eecc5edd692/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_454d9934759d98ec525edb0bd75bcec70642da1c.jar" />
+        sha1="7da84426d876216ed4cdddd85e739be5ecabdd04">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_167d176d1e8e22a1f8f9029c12c434023d4b65c3/classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -66,15 +39,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/rblum/.android/build-cache/cd392bd50107f63deca6d1967e243ff26d02e967/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_aa1b0444d5dd0f2ee415d326c6ef5c133ac87acb.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/rblum/.android/build-cache/f3f3b772766753efc1a6d96a7cb3d8b17527ac59/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -90,6 +54,114 @@
         revision="25.0.3"
         sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
         <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_073a182191a9bd7434eeb01743b4950d409b1a69.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/9df332bbfec1d001f61b1ef42d2e780544270cc3/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4ef8ab5fee042023018249474bc93bd4b2b9c17e">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_df1e8d9ef8690be30c797be1927bfbfdb678d050/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/rblum/.android/build-cache/804f33ddce9f5f4277c2eafafb0ccdbb1699bd24/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_56cc445dcd41187aad520976d216ca94241ac975.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3b9831148a70bf3dffc0fa25a017f91ab8f3d184">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_90f77aa8278f6c2e3434c1adc33a6ab04a756c48/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/rblum/.android/build-cache/2247ff678df4a273d7c575af5efc9034f3ac4172/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_8f7c94131a4af7a7c873f1deaa23a132c0a4d3fc.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_e7118a95a331e7d02435063341283888c3c3adab/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/rblum/.android/build-cache/4606df22c4f7e1fcc8211e58ed2e63a81e92a73d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_7244bd953a59c6e539df2591b17fa64c541f1df1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/rblum/.android/build-cache/fb2780fb541cacdefe8bc120318fb708ba71b709/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_edf1d155933da73119254333e6605b7297e3d47d.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/ef7cd4be2941edceba216baab33106e926c26db3/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ea4b54dcbfe5ac05efb0a314105f07258118d3a7">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fa42228aa508c2b6b59b5cb24ea0dd56618fdcb8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/70b62adcfefa8da4723178811d9c602a55f6044b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="cc178928721f3222b3b06bdfbd9497378ccb9792">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cbaeb0598d59c0b4c09e204917af3b6fefeade4a/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/rblum/.gradle/caches/modules-2/files-2.1/org.sqldroid/sqldroid/1.0.3/e163bbc80e2c7b99d7f20cffa36fd5b25996975/sqldroid-1.0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0e163bbc80e2c7b99d7f20cffa36fd5b25996975">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/sqldroid-1.0.3_659a3d8553e5487606d9e997cae79c8d52bd7203.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/rblum/.android/build-cache/c513eb6fc0403ffb811a09976da79eecc5edd692/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_454d9934759d98ec525edb0bd75bcec70642da1c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/rblum/.android/build-cache/cd392bd50107f63deca6d1967e243ff26d02e967/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_aa1b0444d5dd0f2ee415d326c6ef5c133ac87acb.jar" />
     </item>
     <item
         is-multidex="false"
@@ -110,6 +182,24 @@
         <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_5e6082fb50922fcc577617411473247b481525be.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/57f9c7dc116f80098f102462e0ee17a9af3a29ee/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0dc8ab07eeceda5e99b305c8069765056b6e5c9d">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f49bb6a0cb4e9cfb7add042b20d5d65ffb019f08/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/5e711b4074372a1120928f1e98198659c6ca9446/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1941832901fc4e7a93300b53762e9f65d7650b99">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f462cc8f68edd7d4008598ede58f4db12a6bfec5/classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="/Users/rblum/.android/build-cache/e1e1b349865af6b753a14549362738ff78665971/output/jars/classes.jar"
         jumboMode="false"
@@ -117,15 +207,6 @@
         revision="25.0.3"
         sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
         <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_1379d790ef94a80c269d416a5858f7339b1ff4ed.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/rblum/.android/build-cache/804f33ddce9f5f4277c2eafafb0ccdbb1699bd24/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_56cc445dcd41187aad520976d216ca94241ac975.jar" />
     </item>
     <item
         is-multidex="false"
@@ -146,13 +227,31 @@
         <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_655a4d23b14474b913f112976d2dab57aeb2b57c.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/rblum/.android/build-cache/2247ff678df4a273d7c575af5efc9034f3ac4172/output/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/7f326a0bb44df7251d845dc3635ae882ed3641b8/output/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
-        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/pre-dexed/debug/classes_8f7c94131a4af7a7c873f1deaa23a132c0a4d3fc.jar" />
+        sha1="7a23185c9b1c100e7d1a32275017e4712e31c796">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_82e89f697ee0d3493c910c8cf86023ac4f916bab/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/253a1f6e4c163495e4223993960c1a419a9323ea/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="42df48c7305b08b14fa0e84561091b0c24d70d26">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_abde915ac4573ce4547db4947a7ddd46cfe98fdf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/rblum/.android/build-cache/0875ba50a0547da567087ba43d5d7bc71f0a618b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6f65c144283b31b4b9a70e6e7aa4c4a1c897d4b8">
+        <dex dex="/Users/rblum/AndroidStudioProjects/Journal/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1ab0ac6412727cc952a670201d5163b75833fc81/classes.dex" />
     </item>
 
 </items>
