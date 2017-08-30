@@ -1,6 +1,7 @@
 package com.schmecs.journal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -75,11 +76,15 @@ public class LoginActivity extends AppCompatActivity
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
+        // Session Manager
+        SessionManager session = new SessionManager(getApplicationContext());
+
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
+            session.createLoginSession(acct.getId());
             updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
@@ -99,6 +104,7 @@ public class LoginActivity extends AppCompatActivity
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
+
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {

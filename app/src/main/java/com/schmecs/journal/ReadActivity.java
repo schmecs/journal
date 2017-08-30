@@ -53,7 +53,9 @@ public class ReadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.read_journal);
 
-        mUserName = "human";
+        SessionManager session = new SessionManager(getApplicationContext());
+
+        mUserName = session.getUsername();
         mJournal = new Journal();
         mJournal.loadJournal(mUserName);
         postList = this.makeList(mJournal);

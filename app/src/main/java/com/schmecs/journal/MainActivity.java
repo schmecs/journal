@@ -41,17 +41,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //isUserLoggedIn = getApplicationContext().getSharedPreferences("loggedInUser",0);
-        mUserName = "human";
-//        if (isUserLoggedIn.contains("userName")) {
-//            if (isUserLoggedIn.getString("userName",null) == null) {
-//                mUserName = loginUser();
-//            } else {
-//                mUserName = isUserLoggedIn.getString("userName",null);
-//            }
-//        } else {
-//            mUserName = loginUser();
-//        }
+        SessionManager session = new SessionManager(getApplicationContext());
+
+        mUserName = session.getUsername();
+
         Log.d("Check mUserName","Value: " + mUserName);
 
         TextView textView = (TextView) findViewById(R.id.welcome_screen);
