@@ -31,7 +31,7 @@ import static com.schmecs.journal.R.menu.menu_main;
 
 public class EntryActivity extends AppCompatActivity {
 
-    String mUserName;
+    String mUserId;
     Journal mJournal;
     Date mDate = new Date();
 
@@ -43,11 +43,12 @@ public class EntryActivity extends AppCompatActivity {
 
         SessionManager session = new SessionManager(getApplicationContext());
 
-        mUserName = session.getUsername();
+        mUserId = session.getUserId();
         mJournal = new Journal();
-        mJournal.loadJournal(mUserName);
+        mJournal.loadJournal(mUserId);
         String postCount = Integer.toString(mJournal.getPostCount());
         Log.d("postCount", postCount);
+        Log.d("current user ID", mUserId);
 
         Button saveButton = (Button) findViewById(R.id.save_entry_button);
         final TextInputEditText entryTextInput = (TextInputEditText) findViewById(R.id.entry_text_input);
@@ -57,7 +58,7 @@ public class EntryActivity extends AppCompatActivity {
             @Override
             public void onClick (View view) {
                 String content = entryTextInput.getText().toString();
-                Post post = new Post(mUserName,content,mDate);
+                Post post = new Post(mUserId,content,mDate);
                 mJournal.addPost(post);
                 mJournal.saveJournal();
                 String postCount = Integer.toString(mJournal.getPostCount());

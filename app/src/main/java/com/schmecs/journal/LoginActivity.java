@@ -42,6 +42,10 @@ public class LoginActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Session Manager
+        SessionManager session = new SessionManager(getApplicationContext());
+        session.logoutUser();
+
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -76,15 +80,15 @@ public class LoginActivity extends AppCompatActivity
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        // Session Manager
-        SessionManager session = new SessionManager(getApplicationContext());
 
+        SessionManager session = new SessionManager(getApplicationContext());
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            session.createLoginSession(acct.getId());
+            //TODO: Why is this null when trying to sign in
+//          mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
+            session.createLoginSession(acct.getGivenName(), acct.getId());
             updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.

@@ -16,14 +16,14 @@ public class Post implements Comparator<Post> {
     private String mPostString;
     private String mDate;
 
-	public Post(String author, String text, Date date) {
+	public Post(String authorId, String text, Date date) {
 
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 		mDate = DATE_FORMAT.format(date);
 		mPostInfo = new HashMap<String,String>();
 		mPostInfo.put("text",text);
 		mPostInfo.put("date",mDate);
-		mPostInfo.put("author",author);
+		mPostInfo.put("authorId",authorId);
 	}
 
 	public String getText() {
@@ -49,16 +49,6 @@ public class Post implements Comparator<Post> {
 		public int compare(Post post1, Post post2) {
 			return post1.getDateStamp().compareTo(post2.getDateStamp());
 		}
-
-		//public String getAuthor() {
-	//	return (String) mPostInfo.get("author");
-	//}
-
-
-	// @Override
-	// public String toString() {
-	// 	// TODO
-	// }
 
 
 }

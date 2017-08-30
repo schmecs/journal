@@ -51,7 +51,7 @@ public class Journaldb {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS all_posts (\n"
                 + " postId text NOT NULL,\n"
-                + " author text NOT NULL,\n"
+                + " authorId text NOT NULL,\n"
                 + " date text NOT NULL,\n"
                 + " postContent text,\n"
                 + " PRIMARY KEY(postId, author));";
@@ -85,13 +85,13 @@ public class Journaldb {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void insert(String postId, String author, String date, String postContent) {
-        String sql = "INSERT INTO all_posts(postId,author,date,postContent) VALUES(?,?,?,?)";
+    public void insert(String postId, String authorId, String date, String postContent) {
+        String sql = "INSERT INTO all_posts(postId,authorId,date,postContent) VALUES(?,?,?,?)";
 
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, postId);
-            pstmt.setString(2, author);
+            pstmt.setString(2, authorId);
             pstmt.setString(3, date);
             pstmt.setString(4, postContent);
             pstmt.executeUpdate();
@@ -102,12 +102,12 @@ public class Journaldb {
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public Map<String, Post> selectByAuthor(String author){
+    public Map<String, Post> selectByAuthor(String authorId){
         Map<String, Post> oldPosts = new HashMap<String, Post>();
-        String sql = "SELECT * FROM all_posts WHERE author = ?"; // TODO: fix parameterized query with author string
+        String sql = "SELECT * FROM all_posts WHERE authorId = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-             pstmt.setString(1, author);
+             pstmt.setString(1, authorId);
              ResultSet rs    = pstmt.executeQuery();
             
             // loop through the result set
@@ -121,7 +121,7 @@ public class Journaldb {
                 Date thisDate = DATE_FORMAT.parse(thisDateStr);
                 String thisPostContent = rs.getString("postContent");
 
-                Post post = new Post(author,thisPostContent,thisDate);
+                Post post = new Post(authorId,thisPostContent,thisDate);
 
                 //load post to Journal
                 oldPosts.put(postId, post);

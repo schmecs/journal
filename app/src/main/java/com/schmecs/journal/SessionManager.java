@@ -27,7 +27,10 @@ public class SessionManager {
     private static final String IS_LOGIN = "IsLoggedIn";
 
     // User name (make variable public to access from outside)
-    public static final String KEY_NAME = "name";
+    public static final String GIVEN_NAME = "name";
+
+    // User ID (make variable public to access from outside)
+    public static final String USER_ID = "id";
 
     // Constructor
     public SessionManager(Context context){
@@ -41,12 +44,15 @@ public class SessionManager {
     /**
      * Create login session
      * */
-    public void createLoginSession(String name){
+    public void createLoginSession(String name, String id){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
         // Storing name in pref
-        editor.putString(KEY_NAME, name);
+        editor.putString(GIVEN_NAME, name);
+
+        // Storing id in pref
+        editor.putString(USER_ID, id);
 
         // commit changes
         editor.commit();
@@ -56,10 +62,20 @@ public class SessionManager {
      * Get stored session data
      * */
     public String getUsername(){
-        String user = pref.getString(KEY_NAME, null);
+        String user = pref.getString(GIVEN_NAME, null);
 
         // return user
         return user;
+    }
+
+    /**
+     * Get stored session data
+     * */
+    public String getUserId(){
+        String id = pref.getString(USER_ID, null);
+
+        // return user
+        return id;
     }
 
     /**
@@ -70,16 +86,16 @@ public class SessionManager {
         editor.clear();
         editor.commit();
 
-        // After logout redirect user to Loing Activity
-        Intent i = new Intent(_context, LoginActivity.class);
-        // Closing all the Activities
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        // Add new Flag to start new Activity
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        // Staring Login Activity
-        _context.startActivity(i);
+//        // After logout redirect user to Loing Activity
+//        Intent i = new Intent(_context, LoginActivity.class);
+//        // Closing all the Activities
+//        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//        // Add new Flag to start new Activity
+//        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+//        // Staring Login Activity
+//        _context.startActivity(i);
     }
 
     /**

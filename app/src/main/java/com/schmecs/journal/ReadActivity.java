@@ -43,7 +43,7 @@ public class ReadActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private Context mContext;
 
-    String mUserName;
+    String mUserId;
     Journal mJournal;
     Set<String> mPostIds;
 
@@ -55,9 +55,9 @@ public class ReadActivity extends AppCompatActivity {
 
         SessionManager session = new SessionManager(getApplicationContext());
 
-        mUserName = session.getUsername();
+        mUserId = session.getUserId();
         mJournal = new Journal();
-        mJournal.loadJournal(mUserName);
+        mJournal.loadJournal(mUserId);
         postList = this.makeList(mJournal);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
