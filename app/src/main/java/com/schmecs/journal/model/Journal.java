@@ -19,7 +19,6 @@ public class Journal implements Serializable {
     private int mPostId;
     private int nextPostId;
     private Journaldb mJournaldb;
-    private String mAuthorId;
     private int mLatest;
   
   @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -39,11 +38,11 @@ public class Journal implements Serializable {
     public void loadJournal(String userId) {
         Journaldb.createPostTable();
         //try {
-            mAuthorId = userId.toLowerCase();
+            //mAuthorId = userId.toLowerCase();
         //} catch (IOException ioe) {
         //    ioe.printStackTrace();
         //}
-        Map<String, Post> oldPosts = mJournaldb.selectByAuthor(mAuthorId);
+        Map<String, Post> oldPosts = mJournaldb.selectByAuthor(userId);
         for (Map.Entry<String, Post> entry : oldPosts.entrySet()) {
             this.addPost(entry.getValue());
         }
@@ -51,11 +50,11 @@ public class Journal implements Serializable {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void saveJournal() {
+    public void saveJournal(String userId) {
         for (String id : this.postIds()) {
             if (Integer.parseInt(id) > mLatest) {
                 Post post = this.getPost(id);
-                mJournaldb.insert(id, mAuthorId, post.getDate(), post.getText());
+                mJournaldb.insert(id, userId, post.getDate(), post.getText());
                 //TODO: add validation & toast that post successfully added
             }
         }

@@ -60,7 +60,7 @@ public class EntryActivity extends AppCompatActivity {
                 String content = entryTextInput.getText().toString();
                 Post post = new Post(mUserId,content,mDate);
                 mJournal.addPost(post);
-                mJournal.saveJournal();
+                mJournal.saveJournal(mUserId);
                 String postCount = Integer.toString(mJournal.getPostCount());
                 Log.d("postCount", postCount);
                 launchReader();

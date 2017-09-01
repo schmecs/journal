@@ -54,7 +54,7 @@ public class Journaldb {
                 + " authorId text NOT NULL,\n"
                 + " date text NOT NULL,\n"
                 + " postContent text,\n"
-                + " PRIMARY KEY(postId, author));";
+                + " PRIMARY KEY(postId, authorId));";
         
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
