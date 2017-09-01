@@ -100,6 +100,26 @@ public class Journaldb {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public String maxIdByAuthor(String authorId) {
+        String sql = "SELECT MAX(id) FROM all_posts WHERE authorId = ?";
+        String maxId = "0";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, authorId);
+            ResultSet rs = pstmt.executeQuery();
+            maxId = rs.getString(1);
+            Log.d("maxId",maxId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (maxId == null) {
+            return "0";
+        } else {
+            return maxId;
+        }
+    }
+
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public Map<String, Post> selectByAuthor(String authorId){

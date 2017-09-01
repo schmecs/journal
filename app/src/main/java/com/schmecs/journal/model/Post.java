@@ -34,6 +34,10 @@ public class Post implements Comparator<Post> {
 		return (String) mPostInfo.get("date");
 	}
 
+	public String getAuthor() {
+		return (String) mPostInfo.get("authorId");
+	}
+
 	public Date getDateStamp() {
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 		try {

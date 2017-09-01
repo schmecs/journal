@@ -46,18 +46,11 @@ public class Journal implements Serializable {
         for (Map.Entry<String, Post> entry : oldPosts.entrySet()) {
             this.addPost(entry.getValue());
         }
-        mLatest = this.getPostCount() - 1; //this is janky and perhaps journal format needs some work, or i need a better way of tracking last id / date
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void saveJournal(String userId) {
-        for (String id : this.postIds()) {
-            if (Integer.parseInt(id) > mLatest) {
-                Post post = this.getPost(id);
-                mJournaldb.insert(id, userId, post.getDate(), post.getText());
-                //TODO: add validation & toast that post successfully added
-            }
-        }
+//        if (this.getPostCount() == 0) {
+//            mLatest = -1;
+//        } else {
+//            mLatest = this.getPostCount() - 1; //this is janky and perhaps journal format needs some work, or i need a better way of tracking last id / date
+//        }
     }
 
   public Post getPost(String postID) {

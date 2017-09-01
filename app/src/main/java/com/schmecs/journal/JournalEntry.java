@@ -97,7 +97,7 @@
 //					readJournal();
 //					break;
 //				case "quit" :
-//					this.saveJournal();
+//					this.savePost();
 //					System.out.printf("Saving updates . . . %n");
 //					System.out.printf("Bye for now. %n");
 //					break;

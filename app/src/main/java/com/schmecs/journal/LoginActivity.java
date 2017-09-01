@@ -27,6 +27,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.schmecs.journal.model.Post;
 
+//TODO: Fix manifest so this doesn't look like a separate app (???)
 public class LoginActivity extends AppCompatActivity
         implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
