@@ -95,28 +95,9 @@ public class Journaldb {
             pstmt.setString(3, date);
             pstmt.setString(4, postContent);
             pstmt.executeUpdate();
+            Log.d("postId saved",postId);
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public String maxIdByAuthor(String authorId) {
-        String sql = "SELECT MAX(id) FROM all_posts WHERE authorId = ?";
-        String maxId = "0";
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, authorId);
-            ResultSet rs = pstmt.executeQuery();
-            maxId = rs.getString(1);
-            Log.d("maxId",maxId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if (maxId == null) {
-            return "0";
-        } else {
-            return maxId;
         }
     }
 

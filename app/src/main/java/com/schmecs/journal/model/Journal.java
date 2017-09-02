@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Journal implements Serializable {
     public void loadJournal(String userId) {
         Journaldb.createPostTable();
         //try {
-            //mAuthorId = userId.toLowerCase();
+        //mAuthorId = userId.toLowerCase();
         //} catch (IOException ioe) {
         //    ioe.printStackTrace();
         //}
@@ -46,11 +47,12 @@ public class Journal implements Serializable {
         for (Map.Entry<String, Post> entry : oldPosts.entrySet()) {
             this.addPost(entry.getValue());
         }
-//        if (this.getPostCount() == 0) {
-//            mLatest = -1;
-//        } else {
-//            mLatest = this.getPostCount() - 1; //this is janky and perhaps journal format needs some work, or i need a better way of tracking last id / date
-//        }
+    }
+
+    public String maxIdByAuthor() {
+        Set<String> postIds = this.postIds();
+        String maxId = Collections.max(postIds);
+        return maxId;
     }
 
   public Post getPost(String postID) {

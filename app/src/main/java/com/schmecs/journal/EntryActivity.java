@@ -41,10 +41,6 @@ public class EntryActivity extends AppCompatActivity {
         SessionManager session = new SessionManager(getApplicationContext());
 
         mUserId = session.getUserId();
-        mJournal = new Journal();
-        mJournal.loadJournal(mUserId);
-        String postCount = Integer.toString(mJournal.getPostCount());
-        Log.d("postCount", postCount);
         Log.d("userId in OnCreate", mUserId);
 
         Button saveButton = (Button) findViewById(R.id.save_entry_button);
@@ -58,8 +54,6 @@ public class EntryActivity extends AppCompatActivity {
                 String content = entryTextInput.getText().toString();
                 Post post = new Post(mUserId,content,mDate);
                 savePost(post);
-                String postCount = Integer.toString(mJournal.getPostCount());
-                Log.d("postCount", postCount);
                 launchReader();
             }
         });
@@ -90,8 +84,9 @@ public class EntryActivity extends AppCompatActivity {
         Journaldb mJournaldb = new Journaldb();
         Log.d("userId in save method", mAuthorId);
 
+        mJournal = new Journal();
         mJournal.loadJournal(mAuthorId);
-        String maxId = mJournaldb.maxIdByAuthor(mAuthorId);
+        String maxId = mJournal.maxIdByAuthor();
         Log.d("maxId in save method", maxId);
         int nextId = Integer.parseInt(maxId) + 1;
         mJournaldb.insert(Integer.toString(nextId), mAuthorId, mPost.getDate(), mPost.getText());
