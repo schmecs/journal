@@ -10,6 +10,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +33,10 @@ public class EntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
+
+        Toolbar readToolbar = (Toolbar) findViewById(R.id.entry_toolbar);
+        setSupportActionBar(readToolbar);
+        readToolbar.inflateMenu(R.menu.menu_entry);
 
         SessionManager session = new SessionManager(getApplicationContext());
 

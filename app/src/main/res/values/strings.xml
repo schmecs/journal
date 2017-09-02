@@ -10,7 +10,9 @@
     <string name="back">Back</string>
     <string name="save_entry">Save Entry</string>
     <string name="entry_hint">Type stuff here.</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Log in</string>
+    <string name="title_activity_read">Your journal</string>
+    <string name="title_activity_entry">New journal entry</string>
 
     <string name="title_text">Sign In\nwith Google</string>
 

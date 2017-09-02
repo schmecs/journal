@@ -53,6 +53,10 @@ public class ReadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.read_journal);
 
+        Toolbar readToolbar = (Toolbar) findViewById(R.id.read_toolbar);
+        setSupportActionBar(readToolbar);
+        readToolbar.inflateMenu(R.menu.menu_read);
+
         SessionManager session = new SessionManager(getApplicationContext());
 
         mUserId = session.getUserId();
@@ -80,7 +84,7 @@ public class ReadActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(menu_read, menu);
+        getMenuInflater().inflate(R.menu.menu_read, menu);
         return true;
     }
 
