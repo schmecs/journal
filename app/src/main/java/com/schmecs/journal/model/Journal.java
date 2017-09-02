@@ -2,6 +2,7 @@ package com.schmecs.journal.model;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -51,7 +52,14 @@ public class Journal implements Serializable {
 
     public String maxIdByAuthor() {
         Set<String> postIds = this.postIds();
-        String maxId = Collections.max(postIds);
+        String maxId;
+        if (postIds.size() > 0) {
+            maxId = Collections.max(postIds);
+            Log.d("maxId", maxId);
+        }
+        else {
+            maxId = "0";
+        }
         return maxId;
     }
 
