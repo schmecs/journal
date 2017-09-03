@@ -1,6 +1,7 @@
 Journal is a native Android app for recording and reading simple text entries.
 
-![screenshot](https://github.com/schmecs/journal/blob/master/Screenshot_read_activity.png "Journal App Screenshot")
+<img src="https://github.com/schmecs/journal/blob/master/Screenshot_entry_activity.png" width="200"/>
+<img src="https://github.com/schmecs/journal/blob/master/Screenshot_read_activity.png" width="200"/>
 
 Current status:
 * All data stored in the device data directory in a SQLite database.
