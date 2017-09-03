@@ -1,5 +1,5 @@
 Journal is a native Android app for recording and reading simple text entries.
-* Uses Google authentication to sign in.
+* Uses Google authentication to sign in (but no cloud sync implemented)
 * All data stored in the device data directory in a SQLite database.
 * User can add an entry via (+) button. Upon clicking "Save" the entry is added to the database.
 * User can read their old entries by clicking the history button. Data from the database is loaded into a recyclerview in descending order by timestamp.
