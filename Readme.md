@@ -1,5 +1,7 @@
 Journal is a native Android app for recording and reading simple text entries.
 
+![screenshot](https://github.com/schmecs/journal/blob/master/Screenshot_read_activity.png "Journal App Screenshot")
+
 Current status:
 * All data stored in the device data directory in a SQLite database.
 * User can add an entry via (+) button. Upon clicking "Save" the entry is added to the database.
