@@ -21,6 +21,8 @@ import android.widget.TextView;
 
 //import com.schmecs.journal.model.Journal;
 
+import com.schmecs.journal.model.Journaldb;
+
 import java.io.Serializable;
 import java.util.Date;
 

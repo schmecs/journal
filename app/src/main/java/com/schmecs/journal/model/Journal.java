@@ -20,13 +20,13 @@ public class Journal implements Serializable {
     private Map<String,Post> mPosts;
     private int mPostId;
     private int nextPostId;
-    private Journaldb mJournaldb;
+//    private Journaldb mJournaldb;
     private int mLatest;
   
   @RequiresApi(api = Build.VERSION_CODES.KITKAT)
   public Journal() {
       mPosts = new HashMap<String,Post>();
-      mJournaldb = new Journaldb();
+//      mJournaldb = new Journaldb();
       //mPostId = 1;
       nextPostId = mPosts.size();
   }
@@ -36,32 +36,19 @@ public class Journal implements Serializable {
     nextPostId = mPosts.size();
   }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void loadJournal(String userId) {
-        Journaldb.createPostTable();
-        //try {
-        //mAuthorId = userId.toLowerCase();
-        //} catch (IOException ioe) {
-        //    ioe.printStackTrace();
-        //}
-        Map<String, Post> oldPosts = mJournaldb.selectByAuthor(userId);
-        for (Map.Entry<String, Post> entry : oldPosts.entrySet()) {
-            this.addPost(entry.getValue());
-        }
-    }
-
-    public String maxIdByAuthor() {
-        Set<String> postIds = this.postIds();
-        String maxId;
-        if (postIds.size() > 0) {
-            maxId = Collections.max(postIds);
-            Log.d("maxId", maxId);
-        }
-        else {
-            maxId = "0";
-        }
-        return maxId;
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    public void loadJournal(String userId) {
+////        Journaldb.createPostTable();
+//        //try {
+//        //mAuthorId = userId.toLowerCase();
+//        //} catch (IOException ioe) {
+//        //    ioe.printStackTrace();
+//        //}
+//        Map<String, Post> oldPosts = mJournaldb.selectByAuthor(userId);
+//        for (Map.Entry<String, Post> entry : oldPosts.entrySet()) {
+//            this.addPost(entry.getValue());
+//        }
+//    }
 
   public Post getPost(String postID) {
     return mPosts.get(postID);

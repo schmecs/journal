@@ -1,6 +1,7 @@
 package com.schmecs.journal;
 
 import com.schmecs.journal.model.Journal;
+import com.schmecs.journal.model.Journaldb;
 import com.schmecs.journal.model.Post;
 
 import android.content.Context;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static com.schmecs.journal.R.menu.menu_main;
@@ -39,12 +41,13 @@ public class ReadActivity extends AppCompatActivity {
 
     private List<Post> postList;
     private RecyclerView mRecyclerView;
+    private Journaldb mJournaldb;
     private JournalRVA adapter;
     private ProgressBar mProgressBar;
     private Context mContext;
 
     String mUserId;
-    Journal mJournal;
+    Map<String,Post> mJournal;
     Set<String> mPostIds;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -60,8 +63,8 @@ public class ReadActivity extends AppCompatActivity {
         SessionManager session = new SessionManager(getApplicationContext());
 
         mUserId = session.getUserId();
-        mJournal = new Journal();
-        mJournal.loadJournal(mUserId);
+        mJournaldb = new Journaldb();
+        mJournal = mJournaldb.selectByAuthor(mUserId);
         postList = this.makeList(mJournal);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -109,11 +112,11 @@ public class ReadActivity extends AppCompatActivity {
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private List<Post> makeList(Journal journal) {
+    private List<Post> makeList(Map<String,Post> journal) {
             postList = new ArrayList<>();
 
-            for (int i = 0; i < journal.getPostCount(); i++) {
-                Post post = journal.getPost(Integer.toString(i));
+            for (int i = 1; i <= journal.size(); i++) {
+                Post post = journal.get(Integer.toString(i));
                 postList.add(post);
             }
             //Sort posts with newest first for recycler view

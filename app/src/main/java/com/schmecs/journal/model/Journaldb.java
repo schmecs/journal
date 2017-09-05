@@ -11,6 +11,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -50,11 +51,12 @@ public class Journaldb {
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS all_posts (\n"
+                + " id bigint NOT NULL,"
                 + " postId text NOT NULL,\n"
                 + " authorId text NOT NULL,\n"
                 + " date text NOT NULL,\n"
                 + " postContent text,\n"
-                + " PRIMARY KEY(postId, authorId));";
+                + " PRIMARY KEY(id));";
         
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
@@ -85,15 +87,16 @@ public class Journaldb {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void insert(String postId, String authorId, String date, String postContent) {
-        String sql = "INSERT INTO all_posts(postId,authorId,date,postContent) VALUES(?,?,?,?)";
+    public void insert(int tableId, String postId, String authorId, String date, String postContent) {
+        String sql = "INSERT INTO all_posts(id,postId,authorId,date,postContent) VALUES(?,?,?,?,?)";
 
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, postId);
-            pstmt.setString(2, authorId);
-            pstmt.setString(3, date);
-            pstmt.setString(4, postContent);
+            pstmt.setInt(1, tableId);
+            pstmt.setString(2, postId);
+            pstmt.setString(3, authorId);
+            pstmt.setString(4, date);
+            pstmt.setString(5, postContent);
             pstmt.executeUpdate();
             Log.d("postId saved",postId);
         } catch (SQLException e) {
@@ -133,6 +136,26 @@ public class Journaldb {
             Log.d("error",p.getMessage());
         }
         return oldPosts;
+    }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public int maxId() {
+        String sql = "SELECT max(id) id FROM all_posts";
+        Integer maxId = 0;
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+            ResultSet rs    = pstmt.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            Log.d("column count", Integer.toString(rsmd.getColumnCount()));
+            while (rs.next()) {
+                maxId = rs.getInt(1);
+            }
+            Log.d("maxId in db", Integer.toString(maxId));
+        } catch (SQLException e) {
+            Log.d("error",e.getMessage());
+        }
+        return maxId;
     }
 
 }

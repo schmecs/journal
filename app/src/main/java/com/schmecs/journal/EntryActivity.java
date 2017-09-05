@@ -18,15 +18,19 @@ import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.schmecs.journal.R.menu.menu_entry;
 
 public class EntryActivity extends AppCompatActivity {
 
     String mUserId;
-    Journal mJournal;
+    Map<String,Post> mJournal;
     Date mDate = new Date();
+    private Journaldb mJournaldb;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -81,15 +85,27 @@ public class EntryActivity extends AppCompatActivity {
     public void savePost(Post post) {
         Post mPost = post;
         String mAuthorId = post.getAuthor();
-        Journaldb mJournaldb = new Journaldb();
         Log.d("userId in save method", mAuthorId);
 
-        mJournal = new Journal();
-        mJournal.loadJournal(mAuthorId);
-        String maxId = mJournal.maxIdByAuthor();
-        Log.d("maxId in save method", maxId);
-        int nextId = Integer.parseInt(maxId) + 1;
-        mJournaldb.insert(Integer.toString(nextId), mAuthorId, mPost.getDate(), mPost.getText());
+        Journaldb.createPostTable();
+        mJournaldb = new Journaldb();
+        Integer maxId = mJournaldb.maxId();
+        int nextId;
+        String nextAuthorId;
+
+        if (maxId > 0) {
+            mJournal = new HashMap<String,Post>();
+            mJournal = mJournaldb.selectByAuthor(mAuthorId);
+            Log.d("maxId in save method", Integer.toString(maxId));
+            nextId = maxId + 1;
+            String maxIdByAuthor = Collections.max(mJournal.keySet());
+            nextAuthorId = Integer.toString(Integer.parseInt(maxIdByAuthor) + 1);
+        } else {
+            nextId = 1;
+            nextAuthorId = "1";
+        }
+
+        mJournaldb.insert(nextId, nextAuthorId, mAuthorId, mPost.getDate(), mPost.getText());
         //TODO: add validation & toast that post successfully added
     }
 
