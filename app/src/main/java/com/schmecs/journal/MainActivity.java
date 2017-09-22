@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         setSupportActionBar(toolbar);
         SessionManager session = new SessionManager(getApplicationContext());
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         mUserName = session.getUsername();
 
         Log.d("Check mUserName","Value: " + mUserName);
