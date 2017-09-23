@@ -79,7 +79,6 @@ public class ReadActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Post post) {
                 //REPLACE THIS WITH AN EXPANDED VIEW OF THE SINGLE POST
-                Toast.makeText(ReadActivity.this, post.getDate(), Toast.LENGTH_LONG).show();
             }
         });
     }
