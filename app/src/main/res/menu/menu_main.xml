@@ -14,25 +14,25 @@
         <!--android:icon="@android:drawable/ic_menu_revert"-->
         <!--app:showAsAction="ifRoom"-->
         <!--/>-->
-    <item
-        android:id="@+id/new_entry"
-        android:orderInCategory="1"
-        android:title="@string/new_entry"
-        android:icon="@android:drawable/ic_menu_add"
-        app:showAsAction="ifRoom"
-        />
+    <!--<item-->
+        <!--android:id="@+id/new_entry"-->
+        <!--android:orderInCategory="1"-->
+        <!--android:title="@string/new_entry"-->
+        <!--android:icon="@android:drawable/ic_menu_add"-->
+        <!--app:showAsAction="ifRoom"-->
+        <!--/>-->
     <item
         android:id="@+id/read_journal"
-        android:orderInCategory="3"
+        android:orderInCategory="1"
         android:title="@string/read_journal"
         android:icon="@android:drawable/ic_menu_recent_history"
         app:showAsAction="ifRoom"
         />
-    <!--<item-->
-        <!--android:id="@+id/logout"-->
-        <!--android:orderInCategory="1"-->
-        <!--android:title="@string/logout"-->
-        <!--android:icon="@android:drawable/ic_menu_close_clear_cancel"-->
-        <!--app:showAsAction="ifRoom"-->
-        <!--/>-->
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="2"
+        android:title="@string/logout"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        app:showAsAction="ifRoom"
+        />
 </menu>

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.widget.Toast;
 
 public class SessionManager {
     // Shared Preferences
@@ -83,19 +84,24 @@ public class SessionManager {
      * */
     public void logoutUser(){
         // Clearing all data from Shared Preferences
+        CharSequence text = "Logging out " + this.getUsername();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(_context, text, duration);
+        toast.show();
+
         editor.clear();
         editor.commit();
 
-//        // After logout redirect user to Loing Activity
-//        Intent i = new Intent(_context, LoginActivity.class);
-//        // Closing all the Activities
-//        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//
-//        // Add new Flag to start new Activity
-//        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//        // Staring Login Activity
-//        _context.startActivity(i);
+        // After logout redirect user to Login Activity
+        Intent i = new Intent(_context, LoginActivity.class);
+        // Closing all the Activities
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        // Add new Flag to start new Activity
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Start Login Activity
+        _context.startActivity(i);
     }
 
     /**

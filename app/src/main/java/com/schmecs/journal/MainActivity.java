@@ -1,5 +1,6 @@
 package com.schmecs.journal;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //import com.schmecs.journal.model.Journal;
 
@@ -88,18 +90,13 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.new_entry:
-                this.launchEntry();
-                return true;
             case R.id.read_journal:
                 this.launchReader();
                 return true;
-//            case R.id.logout:
-//                editor.clear();
-//                editor.commit();
-//                TextView textView = (TextView) findViewById(R.id.welcome_screen);
-//                String welcomeText = "Welcome, stranger";
-//                textView.setText(welcomeText);
+            case R.id.logout:
+                SessionManager session = new SessionManager(getApplicationContext());
+                session.logoutUser();
+                return true;
             default:
                 return false;
         }

@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity
 
         // Session Manager
         SessionManager session = new SessionManager(getApplicationContext());
-        session.logoutUser();
+//        session.logoutUser();
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
