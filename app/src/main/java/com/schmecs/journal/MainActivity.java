@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         SessionManager session = new SessionManager(getApplicationContext());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                launchEntry();
+            }
+        });
 
         mUserName = session.getUsername();
 
@@ -58,13 +63,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     }
 
-//    public String loginUser() {
-//        this.getUserName();
-//        mUserName = isUserLoggedIn.getString("userName", null);
-//        return mUserName;
-//    }
-
-    //TODO: pass in class to launch as a variable?
     public void launchEntry() {
         Intent intent = new Intent(this, EntryActivity.class);
         startActivity(intent);
@@ -106,32 +104,4 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 return false;
         }
     }
-
-//    public void getUserName() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Enter username");
-//
-//        final EditText input = new EditText(this);
-//        input.setInputType(InputType.TYPE_CLASS_TEXT);
-//        builder.setView(input);
-//
-//        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                editor = isUserLoggedIn.edit();
-//                String userInput = input.getText().toString();
-//                editor.putString("userName",userInput);
-//                editor.apply();
-//            }
-//        }
-//        );
-//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.cancel();
-//            }
-//        });
-//        builder.show();
-//
-//    }
 }
