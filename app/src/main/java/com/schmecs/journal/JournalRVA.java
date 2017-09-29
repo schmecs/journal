@@ -33,19 +33,16 @@ public class JournalRVA extends RecyclerView.Adapter<JournalRVA.CustomViewHolder
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.journal_entry, null);
-        CustomViewHolder viewHolder = new CustomViewHolder(view);
-        return viewHolder;
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.journal_entry, viewGroup, false);
+        return new CustomViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(CustomViewHolder customViewHolder, int i) {
         final Post post = postList.get(i);
-        Log.d("post integer", Integer.toString(i));
 
         //Setting text view title
         customViewHolder.textViewDate.setText(post.getDate());
-        Log.d("post date", post.getDate());
         customViewHolder.textViewContent.setText(post.getText());
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -65,8 +62,8 @@ public class JournalRVA extends RecyclerView.Adapter<JournalRVA.CustomViewHolder
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
         //protected ImageView imageView;
-        protected TextView textViewDate;
-        protected TextView textViewContent;
+        private TextView textViewDate;
+        private TextView textViewContent;
 
         public CustomViewHolder(View view) {
             super(view);

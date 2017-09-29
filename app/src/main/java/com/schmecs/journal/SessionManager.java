@@ -84,6 +84,7 @@ public class SessionManager {
      * */
     public void logoutUser(){
         // Clearing all data from Shared Preferences
+        //TODO:
         CharSequence text = "Logging out " + this.getUsername();
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(_context, text, duration);

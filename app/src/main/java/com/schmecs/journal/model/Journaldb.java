@@ -18,8 +18,10 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Journaldb {
@@ -86,40 +88,70 @@ public class Journaldb {
         }
     }
 
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void insert(int tableId, String postId, String authorId, String date, String postContent) {
+    public int getNextUserPostId(String authorId) {
+        String sql = "SELECT max(postId) postId FROM all_posts WHERE authorId = ?";
+        Integer nextUserPostId = 0;
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+                pstmt.setString(1, authorId);
+                ResultSet rs    = pstmt.executeQuery();
+                while (rs.next()) {
+                    nextUserPostId = rs.getInt(1);
+                }
+                Log.d("max User Post Id", Integer.toString(nextUserPostId));
+            } catch (SQLException e) {
+                Log.d("error",e.getMessage());
+            }
+            return nextUserPostId + 1;
+        }
+
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void insert(Post post) {
+        createPostTable();
+        int tableId = nextId();
+        String authorId = post.getAuthor();
+        int userPostId = getNextUserPostId(authorId);
+        String date = post.getDate();
+        String postContent = post.getText();
+
         String sql = "INSERT INTO all_posts(id,postId,authorId,date,postContent) VALUES(?,?,?,?,?)";
 
         try (Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, tableId);
-            pstmt.setString(2, postId);
+            pstmt.setString(2, Integer.toString(userPostId));
             pstmt.setString(3, authorId);
             pstmt.setString(4, date);
             pstmt.setString(5, postContent);
             pstmt.executeUpdate();
-            Log.d("postId saved",postId);
+            Log.d("tableId",Integer.toString(tableId));
+            Log.d("userPostId",Integer.toString(userPostId));
+            Log.d("authorId",authorId);
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public Map<String, Post> selectByAuthor(String authorId){
-        Map<String, Post> oldPosts = new HashMap<String, Post>();
+    public List<Post> selectByAuthor(String authorId){
+        List<Post> oldPosts = new ArrayList<>();
         String sql = "SELECT * FROM all_posts WHERE authorId = ?";
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-             pstmt.setString(1, authorId);
+        Connection conn = this.connect();
+        PreparedStatement pstmt = null;
+        try {
+            pstmt  = conn.prepareStatement(sql);
+            pstmt.setString(1, authorId);
              ResultSet rs    = pstmt.executeQuery();
             
             // loop through the result set
             while (rs.next()) {
-                //retrieve post Id
-                String postId = rs.getString("postId");
 
-                //retrieve and combine rest of post into Post
+                //retrieve and combine contents into Post
                 //String thisAuthor = rs.getString("author");
                 String thisDateStr = rs.getString("date");
                 Date thisDate = DATE_FORMAT.parse(thisDateStr);
@@ -128,19 +160,26 @@ public class Journaldb {
                 Post post = new Post(authorId,thisPostContent,thisDate);
 
                 //load post to Journal
-                oldPosts.put(postId, post);
+                oldPosts.add(post);
             }
-        } catch (SQLException e) {
-            Log.d("error",e.getMessage());
-        } catch (ParseException p) {
-            Log.d("error",p.getMessage());
+        } catch (SQLException|ParseException e) {
+            Log.d("error", e.getMessage());
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    Log.d("error", e.getMessage());
+                }
+            }
         }
         return oldPosts;
     }
 
+    // Need to get rid of Try with Resources so that these are not requirements
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public int maxId() {
+    public int nextId() {
         String sql = "SELECT max(id) id FROM all_posts";
         Integer maxId = 0;
         try (Connection conn = this.connect();
@@ -155,7 +194,7 @@ public class Journaldb {
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
         }
-        return maxId;
+        return maxId + 1;
     }
 
 }

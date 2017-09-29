@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
         TextView textView = (TextView) findViewById(R.id.welcome_screen);
         // using postCount in welcome text just as a check for now
-        String welcomeText = "Welcome, " + mUserName;
+        String welcomeText = String.format("Welcome, %s", mUserName);
         textView.setText(welcomeText);
 
     }
@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             case R.id.logout:
                 SessionManager session = new SessionManager(getApplicationContext());
                 session.logoutUser();
+                finish();
                 return true;
             default:
                 return false;

@@ -44,17 +44,14 @@ public class ReadActivity extends AppCompatActivity {
     private Journaldb mJournaldb;
     private JournalRVA adapter;
     private ProgressBar mProgressBar;
-    private Context mContext;
 
     String mUserId;
-    Map<String,Post> mJournal;
-    Set<String> mPostIds;
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.read_journal);
+
 
         Toolbar readToolbar = (Toolbar) findViewById(R.id.read_toolbar);
         setSupportActionBar(readToolbar);
@@ -64,13 +61,13 @@ public class ReadActivity extends AppCompatActivity {
 
         mUserId = session.getUserId();
         mJournaldb = new Journaldb();
-        mJournal = mJournaldb.selectByAuthor(mUserId);
-        postList = this.makeList(mJournal);
+        postList = mJournaldb.selectByAuthor(mUserId);
+        Collections.sort(postList);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new JournalRVA(mContext, postList);
+        adapter = new JournalRVA(this, postList);
         mRecyclerView.setAdapter(adapter);
         //mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
@@ -107,25 +104,6 @@ public class ReadActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
-    }
-
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private List<Post> makeList(Map<String,Post> journal) {
-            postList = new ArrayList<>();
-
-            for (int i = 1; i <= journal.size(); i++) {
-                Post post = journal.get(Integer.toString(i));
-                postList.add(post);
-            }
-            //Sort posts with newest first for recycler view
-            Collections.sort(postList, new Comparator<Post>() {
-            @Override
-            public int compare(Post post1, Post post2) {
-                return post2.getDateStamp().compareTo(post1.getDateStamp());
-            }
-        });
-        return postList;
     }
 
     public void launchHome() {

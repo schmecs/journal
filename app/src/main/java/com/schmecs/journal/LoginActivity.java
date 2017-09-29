@@ -87,7 +87,6 @@ public class LoginActivity extends AppCompatActivity
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            //TODO: Why is this null when trying to sign in
 //          mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             session.createLoginSession(acct.getGivenName(), acct.getId());
             updateUI(true);
@@ -121,6 +120,7 @@ public class LoginActivity extends AppCompatActivity
     public void launchHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
