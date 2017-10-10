@@ -57,9 +57,7 @@ public class EntryActivity extends AppCompatActivity {
             public void onClick (View view) {
                 Log.d("userID in OnClick", mUserId);
                 String content = entryTextInput.getText().toString();
-                Post mPost = new Post(mUserId,content,mDate);
-                Journaldb mJournaldb = new Journaldb();
-                boolean isSaved = mJournaldb.insert(mPost);
+                boolean isSaved = new Journaldb().insert(new Post(mUserId,content,mDate));
                 Log.d("Saved?", String.valueOf(isSaved));
 
                 if (isSaved) {
