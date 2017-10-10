@@ -28,6 +28,11 @@ public class Journaldb {
 
     SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public Journaldb () {
+        this.createPostTable();
+    }
+
     private Connection connect() {
         // SQLite connection string
         try {
@@ -92,28 +97,27 @@ public class Journaldb {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public int getNextUserPostId(String authorId) {
-        String sql = "SELECT max(postId) postId FROM all_posts WHERE authorId = ?";
-        Integer nextUserPostId = 0;
+        String lastUserPostId = "0";
+        String sql = "SELECT COUNT(*) postId FROM all_posts WHERE authorId = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
                 pstmt.setString(1, authorId);
                 ResultSet rs    = pstmt.executeQuery();
                 while (rs.next()) {
-                    nextUserPostId = rs.getInt(1);
+                    lastUserPostId = rs.getString(1);
                 }
-                Log.d("max User Post Id", Integer.toString(nextUserPostId));
+                Log.d("max User Post Id", lastUserPostId);
             } catch (SQLException e) {
                 Log.d("error",e.getMessage());
             }
-            return nextUserPostId + 1;
+            return Integer.parseInt(lastUserPostId) + 1;
         }
 
 
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void insert(Post post) {
-        createPostTable();
+    public boolean insert(Post post) {
         int tableId = nextId();
         String authorId = post.getAuthor();
         int userPostId = getNextUserPostId(authorId);
@@ -136,6 +140,8 @@ public class Journaldb {
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
         }
+
+        return userPostId + 1 == (getNextUserPostId(authorId)); // check that new user ID has incremented
     }
 
     public List<Post> selectByAuthor(String authorId){

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -58,7 +59,14 @@ public class EntryActivity extends AppCompatActivity {
                 String content = entryTextInput.getText().toString();
                 Post mPost = new Post(mUserId,content,mDate);
                 Journaldb mJournaldb = new Journaldb();
-                mJournaldb.insert(mPost);
+                boolean isSaved = mJournaldb.insert(mPost);
+                Log.d("Saved?", String.valueOf(isSaved));
+
+                if (isSaved) {
+                    Toast.makeText(getApplicationContext(), "Post saved!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Hmm ... something went wrong.", Toast.LENGTH_SHORT).show();
+                }
                 //TODO: add validation & toast that post successfully added
                 launchReader();
             }
