@@ -26,11 +26,11 @@ import java.util.Map;
 
 public class Journaldb {
 
-    SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
+    private SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public Journaldb () {
-        this.createPostTable();
+        createPostTable();
     }
 
     private Connection connect() {
@@ -50,8 +50,7 @@ public class Journaldb {
         return conn;
     }
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
     public static void createPostTable() {
         // SQLite connection string
         String url = "jdbc:sqldroid:/data/data/com.schmecs.journal/Journaldb.db";
@@ -65,58 +64,78 @@ public class Journaldb {
                 + " postContent text,\n"
                 + " PRIMARY KEY(id));";
         
-        try (Connection conn = DriverManager.getConnection(url);
-                Statement stmt = conn.createStatement()) {
-            // create a new table
-            stmt.execute(sql);
-            Log.d("table created", "true");
+        try {
+            Connection conn = DriverManager.getConnection(url);
+            try {
+                Statement stmt = conn.createStatement();
+                try {
+                    // create a new table
+                    stmt.execute(sql);
+                    Log.d("table created", "true");
+                } finally {
+                    stmt.close();
+                }
+            } finally {
+                conn.close();
+            }
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
         }
     }
 
-    //temporary for testing purposes
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
     public static void dropPostTable() {
         // SQLite connection string
         String url = "jdbc:sqldroid:data/data/com.schmecs.journal/Journaldb.db";
         
         String sql = "DROP TABLE all_posts;";
         
-        try (Connection conn = DriverManager.getConnection(url);
-                Statement stmt = conn.createStatement()) {
-            // create a new table
-            stmt.execute(sql);
+        try {
+            Connection conn = DriverManager.getConnection(url);
+            try {
+                Statement stmt = conn.createStatement();
+                try {
+                    // create a new table
+                    stmt.execute(sql);
+                } finally {
+                    stmt.close();
+                }
+            } finally {
+                conn.close();
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public int getNextUserPostId(String authorId) {
         String lastUserPostId = "0";
         String sql = "SELECT COUNT(*) postId FROM all_posts WHERE authorId = ?";
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-                pstmt.setString(1, authorId);
-                ResultSet rs    = pstmt.executeQuery();
-                while (rs.next()) {
-                    lastUserPostId = rs.getString(1);
+        try {
+            Connection conn = this.connect();
+            try {
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                try {
+                    pstmt.setString(1, authorId);
+                    ResultSet rs = pstmt.executeQuery();
+                    while (rs.next()) {
+                        lastUserPostId = rs.getString(1);
+                    }
+                    Log.d("max User Post Id", lastUserPostId);
+                } finally {
+                    pstmt.close();
                 }
-                Log.d("max User Post Id", lastUserPostId);
-            } catch (SQLException e) {
+            } finally {
+                conn.close();
+            }
+        } catch (SQLException e) {
                 Log.d("error",e.getMessage());
             }
             return Integer.parseInt(lastUserPostId) + 1;
         }
 
 
-
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean insert(Post post) {
         int tableId = nextId();
         String authorId = post.getAuthor();
@@ -126,17 +145,26 @@ public class Journaldb {
 
         String sql = "INSERT INTO all_posts(id,postId,authorId,date,postContent) VALUES(?,?,?,?,?)";
 
-        try (Connection conn = this.connect();
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, tableId);
-            pstmt.setString(2, Integer.toString(userPostId));
-            pstmt.setString(3, authorId);
-            pstmt.setString(4, date);
-            pstmt.setString(5, postContent);
-            pstmt.executeUpdate();
-            Log.d("tableId",Integer.toString(tableId));
-            Log.d("userPostId",Integer.toString(userPostId));
-            Log.d("authorId",authorId);
+        try {
+            Connection conn = this.connect();
+            try {
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                try {
+                    pstmt.setInt(1, tableId);
+                    pstmt.setString(2, Integer.toString(userPostId));
+                    pstmt.setString(3, authorId);
+                    pstmt.setString(4, date);
+                    pstmt.setString(5, postContent);
+                    pstmt.executeUpdate();
+                    Log.d("tableId", Integer.toString(tableId));
+                    Log.d("userPostId", Integer.toString(userPostId));
+                    Log.d("authorId", authorId);
+                } finally {
+                    pstmt.close();
+                }
+            } finally {
+                conn.close();
+            }
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
         }
@@ -182,21 +210,27 @@ public class Journaldb {
         return oldPosts;
     }
 
-    // Need to get rid of Try with Resources so that these are not requirements
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public int nextId() {
         String sql = "SELECT max(id) id FROM all_posts";
         Integer maxId = 0;
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-            ResultSet rs    = pstmt.executeQuery();
-            ResultSetMetaData rsmd = rs.getMetaData();
-            Log.d("column count", Integer.toString(rsmd.getColumnCount()));
-            while (rs.next()) {
-                maxId = rs.getInt(1);
+        try {
+            Connection conn = this.connect();
+            try {
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                try {
+                    ResultSet rs = pstmt.executeQuery();
+                    ResultSetMetaData rsmd = rs.getMetaData();
+                    Log.d("column count", Integer.toString(rsmd.getColumnCount()));
+                    while (rs.next()) {
+                        maxId = rs.getInt(1);
+                    }
+                    Log.d("maxId in db", Integer.toString(maxId));
+                } finally {
+                    pstmt.close();
+                }
+            } finally {
+                conn.close();
             }
-            Log.d("maxId in db", Integer.toString(maxId));
         } catch (SQLException e) {
             Log.d("error",e.getMessage());
         }
