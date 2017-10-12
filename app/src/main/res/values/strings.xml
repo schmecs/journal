@@ -38,5 +38,9 @@
 
     <!-- Content Description for images -->
     <string name="desc_google_icon">Google Logo</string>
+    <string name="dialog_text">Type stuff here:</string>
+    <string name="dialog_title">New journal entry</string>
+    <string name="save_entry_dialog">Save Entry</string>
+    <string name="cancel_dialog">Cancel</string>
 
 </resources>

@@ -66,8 +66,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     }
 
     public void launchEntry() {
-        Intent intent = new Intent(this, EntryActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, EntryActivity.class);
+//        startActivity(intent);
+
+        EntryFragment eFrag = new EntryFragment();
+        eFrag.show(getFragmentManager(), "EntryDialogFragment");
     }
 
     public void launchReader() {
