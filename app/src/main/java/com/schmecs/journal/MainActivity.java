@@ -24,15 +24,17 @@ import android.widget.Toast;
 //import com.schmecs.journal.model.Journal;
 
 import com.schmecs.journal.model.Journaldb;
+import com.schmecs.journal.model.Post;
 
 import java.io.Serializable;
 import java.util.Date;
 
 import static com.schmecs.journal.R.menu.menu_main;
 
-public class MainActivity extends AppCompatActivity implements Serializable {
+public class MainActivity extends AppCompatActivity implements Serializable, EntryFragment.EntryListener {
 
     String mUserName;
+    String mUserId;
 
 
     Date mDate = new Date();
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         });
 
         mUserName = session.getUsername();
+        mUserId = session.getUserId();
 
         Log.d("Check mUserName","Value: " + mUserName);
 
@@ -63,6 +66,21 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         String welcomeText = String.format("Welcome, %s", mUserName);
         textView.setText(welcomeText);
 
+    }
+
+    //TODO: figure out why Journaldb constructor has requirements & fix
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void onEntrySaved(String content) {
+        boolean isSaved = new Journaldb().insert(new Post(mUserId,content,mDate));
+        Log.d("Saved?", String.valueOf(isSaved));
+
+        if (isSaved) {
+            Toast.makeText(getApplicationContext(), "Post saved!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Hmm ... something went wrong.", Toast.LENGTH_SHORT).show();
+        }
+        //TODO: add validation & toast that post successfully added
+        launchReader();
     }
 
     public void launchEntry() {
