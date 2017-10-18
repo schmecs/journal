@@ -43,6 +43,8 @@ public class LoginActivity extends AppCompatActivity
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
+        mStatusTextView = (TextView) findViewById(R.id.status);
+
         // Session Manager
         SessionManager session = new SessionManager(getApplicationContext());
 //        session.logoutUser();
