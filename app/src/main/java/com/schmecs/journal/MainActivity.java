@@ -13,13 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-//import com.schmecs.journal.model.Journal;
-
-import com.schmecs.journal.model.Journaldb;
-import com.schmecs.journal.model.Post;
-
 import java.io.Serializable;
-import java.util.Date;
 
 import static com.schmecs.journal.R.menu.menu_main;
 
