@@ -48,10 +48,10 @@ public class EntryFragment extends DialogFragment {
                 Log.d("Saved?", String.valueOf(isSaved));
 
                 if (isSaved) {
-                    Toast.makeText(getActivity().getApplicationContext(), "Post saved!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Post saved!", Toast.LENGTH_SHORT).show();
                     launchReader();
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(), "Hmm ... something went wrong.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Hmm ... something went wrong.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
