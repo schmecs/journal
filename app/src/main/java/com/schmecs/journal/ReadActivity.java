@@ -113,14 +113,8 @@ public class ReadActivity extends AppCompatActivity {
     }
 
     public void launchEntry() {
-        Intent intent = new Intent(this, EntryActivity.class);
-        startActivity(intent);
+        EntryFragment eFrag = new EntryFragment();
+        eFrag.show(getFragmentManager(), "EntryDialogFragment");
     }
-
-//    public Journal getJournal() {
-//        return mJournal;
-//    }
-
-
 
 }

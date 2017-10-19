@@ -22,29 +22,7 @@ import java.util.Date;
 
 public class EntryFragment extends DialogFragment {
 
-//    EntryListener mCallback;
     SessionManager mSessionManager;
-
-//    public interface EntryListener {
-//        public void onEntrySaved(String content);
-//    }
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//
-//        // This makes sure that the container activity has implemented
-//        // the callback interface. If not, it throws an exception
-//        try {
-//            mCallback = (EntryListener) context;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(context.toString()
-//                    + " must implement EntryListener");
-//        }
-//
-//
-//    }
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -57,7 +35,6 @@ public class EntryFragment extends DialogFragment {
         final TextInputEditText entryTextInput = (TextInputEditText) view.findViewById(R.id.entry_text_input);
 
         builder.setTitle("New Journal Entry");
-        builder.setMessage("Enter Text Below");
 
         builder.setPositiveButton(R.string.save_entry_dialog, new DialogInterface.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)

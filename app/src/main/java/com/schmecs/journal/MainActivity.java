@@ -34,10 +34,6 @@ import static com.schmecs.journal.R.menu.menu_main;
 public class MainActivity extends AppCompatActivity implements Serializable {
 
     String mUserName;
-    String mUserId;
-
-
-    Date mDate = new Date();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -57,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         });
 
         mUserName = session.getUsername();
-        mUserId = session.getUserId();
 
         Log.d("Check mUserName","Value: " + mUserName);
 
@@ -88,9 +83,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         switch (id) {
