@@ -17,7 +17,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
@@ -35,8 +34,8 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:clickable="true"
         android:visibility="visible"
-        android:tint="@color/colorPrimaryDark"
-        app:backgroundTint="@color/colorAccent"
+        android:tint="@android:color/white"
+        app:backgroundTint="@color/secondaryColor"
         app:fabSize="normal"
         app:layout_anchor="@id/include"
         app:layout_anchorGravity="bottom|right|end"
