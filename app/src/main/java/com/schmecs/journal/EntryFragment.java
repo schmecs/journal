@@ -35,7 +35,7 @@ public class EntryFragment extends DialogFragment {
         builder.setTitle("New Journal Entry");
 
         builder.setPositiveButton(R.string.save_entry_dialog, new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
                 String content = entryTextInput.getText().toString();

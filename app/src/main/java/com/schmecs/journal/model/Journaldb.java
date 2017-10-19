@@ -1,9 +1,5 @@
 package com.schmecs.journal.model;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import java.sql.Connection;
@@ -28,8 +24,6 @@ public class Journaldb {
 
     private SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 
-    //TODO: figure out why Journaldb constructor has requirements & fix
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public Journaldb () {
         createPostTable();
     }
