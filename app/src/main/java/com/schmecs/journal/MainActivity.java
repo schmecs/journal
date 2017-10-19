@@ -18,8 +18,7 @@ import java.io.Serializable;
 import static com.schmecs.journal.R.menu.menu_main;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
