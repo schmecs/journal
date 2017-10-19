@@ -20,8 +20,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/ReadActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/ReadActivity.java" />
     </list>
     <ignored path="Journal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,19 +74,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntryFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EntryFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+            <state relative-caret-position="319">
+              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1263#1289#0" expanded="true" />
-                <element signature="e#1291#2142#0" expanded="true" />
-                <element signature="e#2141#2142#0" expanded="true" />
-                <element signature="e#2180#2202#0" expanded="true" />
-                <element signature="e#2204#2378#0" expanded="true" />
-                <element signature="e#2377#2378#0" expanded="true" />
+                <element signature="e#1294#1320#0" expanded="true" />
+                <element signature="e#1322#2209#0" expanded="true" />
+                <element signature="e#2208#2209#0" expanded="true" />
+                <element signature="e#2247#2269#0" expanded="true" />
+                <element signature="e#2271#2445#0" expanded="true" />
+                <element signature="e#2444#2445#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReadActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/ReadActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
+            <state relative-caret-position="1635">
               <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -123,8 +121,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="68" column="64" selection-start-line="68" selection-start-column="64" selection-end-line="68" selection-end-column="64" />
+            <state relative-caret-position="180">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="74" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -2171,9 +2169,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_entry.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/entry_dialog.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/ReadActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/ReadActivity.java" />
       </list>
     </option>
   </component>
@@ -3809,6 +3807,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/ReadActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1635">
+          <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2499#2693#0" expanded="true" />
+            <element signature="e#2692#2693#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3819,36 +3829,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="68" column="64" selection-start-line="68" selection-start-column="64" selection-end-line="68" selection-end-column="64" />
+        <state relative-caret-position="180">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="74" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+        <state relative-caret-position="319">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1263#1289#0" expanded="true" />
-            <element signature="e#1291#2142#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2180#2202#0" expanded="true" />
-            <element signature="e#2204#2378#0" expanded="true" />
-            <element signature="e#2377#2378#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/ReadActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2499#2693#0" expanded="true" />
-            <element signature="e#2692#2693#0" expanded="true" />
+            <element signature="e#1294#1320#0" expanded="true" />
+            <element signature="e#1322#2209#0" expanded="true" />
+            <element signature="e#2208#2209#0" expanded="true" />
+            <element signature="e#2247#2269#0" expanded="true" />
+            <element signature="e#2271#2445#0" expanded="true" />
+            <element signature="e#2444#2445#0" expanded="true" />
           </folding>
         </state>
       </provider>

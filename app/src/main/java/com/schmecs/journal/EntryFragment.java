@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -48,6 +49,7 @@ public class EntryFragment extends DialogFragment {
 
                 if (isSaved) {
                     Toast.makeText(getActivity().getApplicationContext(), "Post saved!", Toast.LENGTH_SHORT).show();
+                    launchReader();
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "Hmm ... something went wrong.", Toast.LENGTH_SHORT).show();
                 }
@@ -61,6 +63,11 @@ public class EntryFragment extends DialogFragment {
         });
 
         return builder.create();
+    }
+
+    public void launchReader() {
+        Intent intent = new Intent(getActivity(), ReadActivity.class);
+        startActivity(intent);
     }
 
 }
