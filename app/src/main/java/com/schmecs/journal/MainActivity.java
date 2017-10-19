@@ -31,7 +31,7 @@ import java.util.Date;
 
 import static com.schmecs.journal.R.menu.menu_main;
 
-public class MainActivity extends AppCompatActivity implements Serializable, EntryFragment.EntryListener {
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     String mUserName;
     String mUserId;
@@ -68,24 +68,7 @@ public class MainActivity extends AppCompatActivity implements Serializable, Ent
 
     }
 
-    //TODO: figure out why Journaldb constructor has requirements & fix
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void onEntrySaved(String content) {
-        boolean isSaved = new Journaldb().insert(new Post(mUserId,content,mDate));
-        Log.d("Saved?", String.valueOf(isSaved));
-
-        if (isSaved) {
-            Toast.makeText(getApplicationContext(), "Post saved!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getApplicationContext(), "Hmm ... something went wrong.", Toast.LENGTH_SHORT).show();
-        }
-        //TODO: add validation & toast that post successfully added
-        launchReader();
-    }
-
     public void launchEntry() {
-//        Intent intent = new Intent(this, EntryActivity.class);
-//        startActivity(intent);
 
         EntryFragment eFrag = new EntryFragment();
         eFrag.show(getFragmentManager(), "EntryDialogFragment");

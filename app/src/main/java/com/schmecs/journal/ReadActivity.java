@@ -47,6 +47,7 @@ public class ReadActivity extends AppCompatActivity {
 
     String mUserId;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
