@@ -20,11 +20,7 @@ import java.util.List;
 
 public class ReadActivity extends AppCompatActivity {
 
-    private List<Post> postList;
-    private RecyclerView mRecyclerView;
-    private Journaldb mJournaldb;
-    private JournalRVA adapter;
-    private ProgressBar mProgressBar;
+//    private ProgressBar mProgressBar;
 
     String mUserId;
 
@@ -40,17 +36,17 @@ public class ReadActivity extends AppCompatActivity {
         readToolbar.inflateMenu(R.menu.menu_read);
 
         SessionManager session = new SessionManager(getApplicationContext());
-
         mUserId = session.getUserId();
-        mJournaldb = new Journaldb();
-        postList = mJournaldb.selectByAuthor(mUserId);
+        Journaldb journaldb = new Journaldb();
+
+        List<Post> postList = journaldb.selectByAuthor(mUserId);
         Collections.sort(postList);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new JournalRVA(this, postList);
-        mRecyclerView.setAdapter(adapter);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        JournalRVA adapter = new JournalRVA(this, postList);
+        recyclerView.setAdapter(adapter);
         //mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
 
@@ -94,8 +90,7 @@ public class ReadActivity extends AppCompatActivity {
     }
 
     public void launchEntry() {
-        EntryFragment eFrag = new EntryFragment();
-        eFrag.show(getFragmentManager(), "EntryDialogFragment");
+        new EntryFragment().show(getFragmentManager(), "EntryDialogFragment");
     }
 
 }

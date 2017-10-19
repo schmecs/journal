@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity
         mStatusTextView = (TextView) findViewById(R.id.status);
 
         // Session Manager
-        SessionManager session = new SessionManager(getApplicationContext());
+//        SessionManager session = new SessionManager(getApplicationContext());
 //        session.logoutUser();
 
         // Configure sign-in to request the user's ID, email address, and basic

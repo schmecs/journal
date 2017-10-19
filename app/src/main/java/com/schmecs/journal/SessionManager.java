@@ -1,25 +1,20 @@
 package com.schmecs.journal;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.widget.Toast;
 
-public class SessionManager {
+class SessionManager {
     // Shared Preferences
-    SharedPreferences pref;
+    private SharedPreferences mPref;
 
     // Editor for Shared preferences
-    Editor editor;
+    private Editor mEditor;
 
     // Context
-    Context _context;
-
-    // Shared pref mode
-    int PRIVATE_MODE = 0;
+    private Context mContext;
 
     // Sharedpref file name
     private static final String PREF_NAME = "JournalPref";
@@ -28,16 +23,17 @@ public class SessionManager {
     private static final String IS_LOGIN = "IsLoggedIn";
 
     // User name (make variable public to access from outside)
-    public static final String GIVEN_NAME = "name";
+    private static final String GIVEN_NAME = "name";
 
     // User ID (make variable public to access from outside)
-    public static final String USER_ID = "id";
+    private static final String USER_ID = "id";
 
     // Constructor
-    public SessionManager(Context context){
-        this._context = context;
-        pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
-        editor = pref.edit();
+    SessionManager(Context context){
+        this.mContext = context;
+        int PRIVATE_MODE = 0;
+        mPref = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+        mEditor = mPref.edit();
     }
 
 
@@ -45,56 +41,54 @@ public class SessionManager {
     /**
      * Create login session
      * */
-    public void createLoginSession(String name, String id){
+    void createLoginSession(String name, String id){
         // Storing login value as TRUE
-        editor.putBoolean(IS_LOGIN, true);
+        mEditor.putBoolean(IS_LOGIN, true);
 
-        // Storing name in pref
-        editor.putString(GIVEN_NAME, name);
+        // Storing name in mPref
+        mEditor.putString(GIVEN_NAME, name);
 
-        // Storing id in pref
-        editor.putString(USER_ID, id);
+        // Storing id in mPref
+        mEditor.putString(USER_ID, id);
 
         // commit changes
-        editor.commit();
+        mEditor.commit();
     }
 
     /**
      * Get stored session data
      * */
-    public String getUsername(){
-        String user = pref.getString(GIVEN_NAME, null);
+    String getUsername(){
 
         // return user
-        return user;
+        return mPref.getString(GIVEN_NAME, null);
     }
 
     /**
      * Get stored session data
      * */
-    public String getUserId(){
-        String id = pref.getString(USER_ID, null);
+    String getUserId(){
 
         // return user
-        return id;
+        return mPref.getString(USER_ID, null);
     }
 
     /**
      * Clear session details
      * */
-    public void logoutUser(){
+    void logoutUser(){
         // Clearing all data from Shared Preferences
-        //TODO:
+
         CharSequence text = "Logging out " + this.getUsername();
         int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(_context, text, duration);
+        Toast toast = Toast.makeText(mContext, text, duration);
         toast.show();
 
-        editor.clear();
-        editor.commit();
+        mEditor.clear();
+        mEditor.commit();
 
         // After logout redirect user to Login Activity
-        Intent i = new Intent(_context, LoginActivity.class);
+        Intent i = new Intent(mContext, LoginActivity.class);
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -102,15 +96,15 @@ public class SessionManager {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         // Start Login Activity
-        _context.startActivity(i);
+        mContext.startActivity(i);
     }
 
     /**
      * Quick check for login
      * **/
     // Get Login State
-    public boolean isLoggedIn(){
-        return pref.getBoolean(IS_LOGIN, false);
+    private boolean isLoggedIn(){
+        return mPref.getBoolean(IS_LOGIN, false);
     }
 
     /**
@@ -122,7 +116,7 @@ public class SessionManager {
         // Check login status
         if(!this.isLoggedIn()){
             // user is not logged in redirect him to Login Activity
-            Intent i = new Intent(_context, LoginActivity.class);
+            Intent i = new Intent(mContext, LoginActivity.class);
             // Closing all the Activities
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -130,7 +124,7 @@ public class SessionManager {
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             // Staring Login Activity
-            _context.startActivity(i);
+            mContext.startActivity(i);
         }
 
     }

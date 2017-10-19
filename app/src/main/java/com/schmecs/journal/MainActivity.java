@@ -19,8 +19,6 @@ import static com.schmecs.journal.R.menu.menu_main;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
 
-    String mUserName;
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,21 +36,18 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             }
         });
 
-        mUserName = session.getUsername();
-
-        Log.d("Check mUserName","Value: " + mUserName);
+        Log.d("Check mUserName","Value: " + session.getUsername());
 
         TextView textView = (TextView) findViewById(R.id.welcome_screen);
 
-        String welcomeText = String.format("Welcome, %s", mUserName);
+        String welcomeText = String.format("Welcome, %s", session.getUsername());
         textView.setText(welcomeText);
 
     }
 
+    //TODO: what's the right way not to duplicate this method?
     public void launchEntry() {
-
-        EntryFragment eFrag = new EntryFragment();
-        eFrag.show(getFragmentManager(), "EntryDialogFragment");
+        new EntryFragment().show(getFragmentManager(), "EntryDialogFragment");
     }
 
     public void launchReader() {
@@ -62,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(menu_main, menu);
         return true;
     }
