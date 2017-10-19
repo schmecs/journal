@@ -11,6 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d57d7c30-c8c0-4e84-9b59-3beb56525290" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/schmecs/Testingthings.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/schmecs/Testingthings.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java" />
     </list>
     <ignored path="Journal.iws" />
@@ -43,10 +45,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Journaldb.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Journaldb.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/model/Journaldb.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="105">
               <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
               <folding>
                 <element signature="e#897#898#0" expanded="true" />
@@ -97,12 +99,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="330">
+              <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2907,24 +2911,6 @@
               <option name="myItemId" value="schmecs" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Journal" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="schmecs" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="journal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -3328,7 +3314,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="33" y="26" width="1401" height="858" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32614556" sideWeight="0.4518028" order="7" side_tool="false" content_ui="tabs" />
@@ -3344,7 +3330,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24282561" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24282561" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3412,7 +3398,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3674,8 +3662,8 @@
         <state relative-caret-position="645">
           <caret line="63" column="3" selection-start-line="63" selection-start-column="3" selection-end-line="63" selection-end-column="3" />
           <folding>
-            <element signature="e#1687#1688#0" expanded="true" />
-            <element signature="e#1719#1720#0" expanded="true" />
+            <element signature="e#1687#1688#0" expanded="false" />
+            <element signature="e#1719#1720#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3773,17 +3761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/model/Journaldb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
-          <folding>
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/EntryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -3821,9 +3798,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="330">
+          <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/schmecs/journal/model/Journaldb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+          <folding>
+            <element signature="e#897#898#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

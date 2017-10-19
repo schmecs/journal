@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         Log.d("Check mUserName","Value: " + mUserName);
 
         TextView textView = (TextView) findViewById(R.id.welcome_screen);
-        // using postCount in welcome text just as a check for now
+
         String welcomeText = String.format("Welcome, %s", mUserName);
         textView.setText(welcomeText);
 
