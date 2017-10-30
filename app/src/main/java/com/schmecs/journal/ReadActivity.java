@@ -50,12 +50,12 @@ public class ReadActivity extends AppCompatActivity {
         //mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
 
-        adapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(Post post) {
-                //REPLACE THIS WITH AN EXPANDED VIEW OF THE SINGLE POST
-            }
-        });
+//        adapter.setOnItemClickListener(new OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Post post) {
+//                //REPLACE THIS WITH AN EXPANDED VIEW OF THE SINGLE POST
+//            }
+//        });
     }
 
     @Override

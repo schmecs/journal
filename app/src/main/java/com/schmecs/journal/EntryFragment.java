@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.schmecs.journal.model.Journal;
 import com.schmecs.journal.model.Journaldb;
 import com.schmecs.journal.model.Post;
 
@@ -37,7 +38,8 @@ public class EntryFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
                 String content = entryTextInput.getText().toString();
-                boolean isSaved = new Journaldb().insert(new Post(mSessionManager.getUserId(),
+
+                boolean isSaved = Journaldb.insert(new Post(mSessionManager.getUserId(),
                         content,
                         new Date()));
                 Log.d("Saved?", String.valueOf(isSaved));

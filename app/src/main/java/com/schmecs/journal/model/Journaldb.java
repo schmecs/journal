@@ -22,18 +22,14 @@ public class Journaldb {
 
     private SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss a");
 
-    public Journaldb () {
-        createPostTable();
-    }
-
-    private Connection connect() {
+    private static Connection connect() {
         // SQLite connection string
         try {
             DriverManager.registerDriver((Driver) Class.forName("org.sqldroid.SQLDroidDriver").newInstance());
         } catch (Exception e) {
             throw new RuntimeException("Failed to register SQLDroidDriver");
         }
-        String url = "jdbc:sqldroid:/data/data/com.schmecs.journal/Journaldb.db";
+        String url = "jdbc:sqlite:/data/data/com.schmecs.journal/Journaldb.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -77,6 +73,7 @@ public class Journaldb {
     }
 
 
+    // Not currently used
     public static void dropPostTable() {
         // SQLite connection string
         String url = "jdbc:sqldroid:data/data/com.schmecs.journal/Journaldb.db";
@@ -102,11 +99,11 @@ public class Journaldb {
     }
 
 
-    public int getNextUserPostId(String authorId) {
+    public static int getNextUserPostId(String authorId) {
         String lastUserPostId = "0";
-        String sql = "SELECT COUNT(*) postId FROM all_posts WHERE authorId = ?";
+        String sql = "SELECT COALESCE(COUNT(*),0) postId FROM all_posts WHERE authorId = ?";
         try {
-            Connection conn = this.connect();
+            Connection conn = connect();
             try {
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 try {
@@ -115,7 +112,7 @@ public class Journaldb {
                     while (rs.next()) {
                         lastUserPostId = rs.getString(1);
                     }
-                    Log.d("max User Post Id", lastUserPostId);
+                    Log.d("last User Post Id", lastUserPostId);
                 } finally {
                     pstmt.close();
                 }
@@ -129,7 +126,9 @@ public class Journaldb {
         }
 
 
-    public boolean insert(Post post) {
+    public static boolean insert(Post post) {
+        createPostTable();
+
         int tableId = nextId();
         String authorId = post.getAuthor();
         int userPostId = getNextUserPostId(authorId);
@@ -139,7 +138,7 @@ public class Journaldb {
         String sql = "INSERT INTO all_posts(id,postId,authorId,date,postContent) VALUES(?,?,?,?,?)";
 
         try {
-            Connection conn = this.connect();
+            Connection conn = connect();
             try {
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 try {
@@ -168,7 +167,7 @@ public class Journaldb {
     public List<Post> selectByAuthor(String authorId){
         List<Post> oldPosts = new ArrayList<>();
         String sql = "SELECT * FROM all_posts WHERE authorId = ?";
-        Connection conn = this.connect();
+        Connection conn = connect();
         PreparedStatement pstmt = null;
         try {
             pstmt  = conn.prepareStatement(sql);
@@ -203,11 +202,11 @@ public class Journaldb {
         return oldPosts;
     }
 
-    public int nextId() {
-        String sql = "SELECT max(id) id FROM all_posts";
+    public static int nextId() {
+        String sql = "SELECT COALESCE(max(id),0) id FROM all_posts";
         Integer maxId = 0;
         try {
-            Connection conn = this.connect();
+            Connection conn = connect();
             try {
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 try {
